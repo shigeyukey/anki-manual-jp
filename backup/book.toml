@@ -1,0 +1,42 @@
+
+[book]
+authors = ["Ankitects Pty Ltd and contributors"]
+language = "ja"
+multilingual = false
+src = "src"
+title = "Ankiマニュアル"
+
+[build]
+create-missing = true
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+
+[preprocessor.linkcheck]
+command = "mdbook-linkcheck"
+
+[output.html]
+git-repository-url = "https://forms.gle/jbnPepH378mVb2Sz5"
+git-repository-icon = "fa-envelope"
+additional-css = ["css/misc.css", "css/kbd.css"]
+
+[output.linkcheck]
+optional = true
+warning-policy = "warn"
+follow-web-links = true
+exclude = [
+  'microsoft.com',
+  'twitter.com',
+  'stackexchange.com',
+  'stackoverflow.com',
+  'https://github.com/open-spaced-repetition/fsrs4anki#add-on-compatibility',
+  'support.google.com',
+  'wikiwiki.jp',
+  'shigeyukey.github.io/Anki-faqs-jp',
+
+]
+
+[output.html.fold]
+enable = true
+level = 0
