@@ -1,0 +1,717 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ブラウザ - Ankiマニュアル</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/kbd.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">はじめに</a></li><li class="chapter-item "><a href="background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item "><a href="studying.html"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item "><a href="editing.html"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item "><a href="templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="templates/fields.html"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item "><a href="preferences.html"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item expanded "><a href="browsing.html" class="active"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item "><a href="stats.html"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item "><a href="math.html"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="contrib.html">貢献</a></li><li class="chapter-item affix "><a href="faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="resources.html">リソース</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Ankiマニュアル</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://forms.gle/jbnPepH378mVb2Sz5" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-envelope"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ブラウジング"><a class="header" href="#ブラウジング">ブラウジング</a></h1>
+<!-- toc -->
+<p>ブラウザウィンドウでは、カードやノートを検索して編集することができます。
+メインウィンドウで「ブラウザ」をクリックするか、<kbd>B</kbd>を押すことで開くことができます。
+ブラウザウィンドウは、左側の「サイドバー」、右上の「カード/ノートテーブル」、右下の「編集エリア」の3つのセクションで構成されています。
+セクションの間にマウスを置き、クリックしてドラッグすることで、セクションのサイズを変更することができます。</p>
+<h2 id="テーブルモード"><a class="header" href="#テーブルモード">テーブルモード</a></h2>
+<p><img src="media/browser_table_modes.png" alt="テーブルモード" /></p>
+<p>Anki 2.1.45+では、カードまたはノートがデータテーブルに表示される2つのモードが提供されています。
+現在のモードは、上部のスイッチをクリックするか、<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>または<kbd>Cmd</kbd>+<kbd>Opt</kbd>+<kbd>T</kbd>を押すことで変更することができます。
+スイッチは、現在 <strong>C</strong>（カード）または <strong>N</strong>（ノート）が表示されているかどうかも示しています。</p>
+<p><strong>注意</strong>: 説明をシンプルにするため、このマニュアルでは通常、カードモードを現在有効なモードとして扱っています。
+「カード」の選択/検索などについて言及したい場合、読者は現在有効なモードに応じて「カードまたはノート」に置き換えることができます。</p>
+<h2 id="サイドバー"><a class="header" href="#サイドバー">サイドバー</a></h2>
+<p>左側の「サイドバー」では、一般的な検索用語へのクイックアクセスが可能です。
+Anki 2.1.45+では、検索バー、タグとデッキの編集機能、および2つの異なるツールの選択肢も提供されています。
+ツールは、サイドバーの上部にあるツールバーまたはショートカット<kbd>Alt</kbd>+<kbd>1</kbd>/<kbd>2</kbd>を使用して切り替えることができます。</p>
+<h3 id="検索ツール"><a class="header" href="#検索ツール">検索ツール</a></h3>
+<p><img src="media/browser_search_tool.png" alt="検索ツール" /></p>
+<p>このツールでは、サイドバーは以前のバージョンと同様に動作します。
+アイテムをクリックすると、それに対して検索が実行されます。</p>
+<p><kbd>Ctrl</kbd>（Macでは<kbd>Command</kbd>）を押しながらクリックすると、クリックしたアイテムを現在の検索にAND条件で追加することができます。
+たとえば、ドイツのデッキにある「学習」カードを表示したい場合、"学習"をクリックし、その後<kbd>Ctrl</kbd>を押しながら"ドイツ"をクリックします。</p>
+<p><kbd>Shift</kbd>を押しながらクリックすると、AND条件ではなくOR条件の検索が作成されます。
+たとえば、1つのデッキをクリックし、その後<kbd>Shift</kbd>を押しながら別のデッキをクリックすると、両方のデッキからのカードが同じビューに表示されます。</p>
+<p><kbd>Alt</kbd>（Macでは<kbd>Option</kbd>）を押すと、検索を逆にすることができます（先頭に<code>-</code>を追加）。
+たとえば、特定のタグを持たない現在のデッキのすべてのカードを表示したい場合、<kbd>Alt</kbd>を押しながらクリックすることで実行できます。
+<kbd>Alt</kbd>/<kbd>Option</kbd>は、<kbd>Ctrl</kbd>または<kbd>Shift</kbd>と組み合わせることもできます（たとえば、<kbd>Ctrl</kbd>+<kbd>Alt</kbd>でクリックすると、反転した検索条件が新しく追加されます）。</p>
+<p>Anki 2.1.39+では、同種の検索のすべての出現箇所を新しい検索で置き換えるために、<kbd>Ctrl</kbd>と<kbd>Shift</kbd>を同時に押しながら検索用語をクリックすることもできます。
+たとえば、以前に<code>deck:英語 (is:due or tag:必須単語)</code>という複雑な検索式を入力したあと、スペイン語デッキで同じ検索を実行したい場合、スペイン語デッキをサイドバーでクリックしながら<kbd>Ctrl</kbd>+<kbd>Shift</kbd>を押すと、次の検索式が得られます: <code>deck:スペイン語 (is:due or tag:必須単語)</code>.</p>
+<h3 id="選択ツール"><a class="header" href="#選択ツール">選択ツール</a></h3>
+<p><img src="media/browser_selection_tool2.png" alt="選択ツール" /></p>
+<p>選択ツールは、<kbd>Ctrl</kbd>キーまたは<kbd>Shift</kbd>キーを押しながらクリックすることで、複数のアイテムを同時に選択することができます。また、デッキやタグの順序をドラッグアンドドロップで変更することも可能です。</p>
+<p>例えば、<code>数学</code>、<code>微積分</code>、<code>代数学</code>というタグがあるとします。<code>微積分</code>タグをクリックし、次に<kbd>Ctrl</kbd>キーを押しながら<code>代数学</code>タグをクリックします。これで両方のタグが選択され、どちらかを<code>数学</code>タグにドラッグアンドドロップすると、両方のタグがこのタグの子になります。プログラムの裏側では、Ankiが2つのタグをそれぞれ<code>数学::微積分</code>と<code>数学::代数学</code>に変更し、ノートを更新しています。</p>
+<p>複数のアイテムを選択するもう一つの使用例は検索です｡ アイテムを選択して右クリックすると、<strong>｢検索｣ ➔ ｢選択条件すべてを含む/選択条件のいずれかを含む｣</strong> を選択できます。これは<a href="#%E6%A4%9C%E7%B4%A2%E3%83%84%E3%83%BC%E3%83%AB">検索ツール</a>で説明されているキーボード修飾子と組み合わせて、検索結果を現在の検索に追加できます。</p>
+<ul>
+<li>サイドバー ➔ タグをシフトキーで複数選択 ➔ 右クリック ➔ 検索 ➔ ｢選択条件すべてを含む/選択条件のいずれかを含む｣</li>
+</ul>
+<h3 id="保存した検索条件"><a class="header" href="#保存した検索条件">保存した検索条件</a></h3>
+<p>同じことを定期的に検索する場合、サイドバーの一番上のアイテム(♡保存した検索条件)を右クリックし、「現在の検索条件を保存」を選択し、名前を入力すると、現在の検索条件を保存できます。また、サイドバーの任意のアイテムをこのエリアにドラッグアンドドロップすると、同じ保存検索を追加して上部に固定できます。</p>
+<h3 id="アイテムの編集"><a class="header" href="#アイテムの編集">アイテムの編集</a></h3>
+<p>タグ、デッキ、保存した検索条件は、サイドバーから、右クリックメニューから、またはショートカットキー（Windowsでは<kbd>Del</kbd>と<kbd>F2</kbd>）を使用して直接削除または名前変更できます。削除は複数のアイテムを一度に行うことも可能です（<a href="#%E9%81%B8%E6%8A%9E%E3%83%84%E3%83%BC%E3%83%AB">選択ツール</a>を参照）。</p>
+<h3 id="アイテムの検索"><a class="header" href="#アイテムの検索">アイテムの検索</a></h3>
+<p>サイドバーのツリー内の特定のアイテムを見つけるには、
+名前を検索バーに入力して、検索に一致しないすべてのアイテムを一時的に非表示にします。</p>
+<h2 id="検索ボックス"><a class="header" href="#検索ボックス">検索ボックス</a></h2>
+<p>カードリストの上には検索ボックスがあります。
+ここに様々なことを入力してカードを検索できます。
+検索構文については、<a href="searching.html">検索</a>を参照してください。</p>
+<h2 id="カード-ノートテーブル"><a class="header" href="#カード-ノートテーブル">カード ノートテーブル</a></h2>
+<p>テーブルの行は、現在の検索に一致するカードまたはノートを表します。
+行をクリックすると、対応するノートが下部セクションに表示されます。</p>
+<h3 id="行"><a class="header" href="#行">行</a></h3>
+<p>マウスをドラッグするか、<kbd>Ctrl</kbd>キーまたは<kbd>Command</kbd>キーを押しながら複数の行を選択すると、エディタが一時的に非表示になります。
+デッキの変更など、さまざまな操作は、アクティブなモードに依存せず、一度に複数のカードまたはノートに対して行うことができます。
+したがって、カードモードでは、ノートのいずれかのカードが選択されている場合、そのノートは選択されたと見なされます。
+ノートモードでは、カードが選択されている場合、そのカードのノートが選択されたと見なされます。</p>
+<p>その他の操作（カード情報の表示など）は、単一のカードまたはノートにのみ適用されます。
+これは「現在の」カードまたはノートと呼ばれ、通常は最後に選択またはクリックされたものです。
+カードモードでは、再び、現在のノートは現在のカードのノートであり、ノートモードでは、現在のカードは現在のノートの最初のカードです。</p>
+<p>背景色はカードとノートに応じて変化します。カードモードでは、最初に一致したものが使用されます:</p>
+<ol>
+<li>カードが<strong>フラグ付き</strong>の場合、フラグの色が使用されます。</li>
+<li>カードが<strong>中断されている</strong>場合、黄色が使用されます。</li>
+<li>カードのノートが<strong>マークされている</strong>場合、紫が使用されます。</li>
+</ol>
+<p>ノートモードでは、色はマークされたノートにのみ適用されます。
+マークされたノートと中断されたカードについての詳細は、<a href="studying.html#%E7%B7%A8%E9%9B%86%E3%81%A8%E3%81%9D%E3%81%AE%E4%BB%96">編集とその他</a>を参照してください。</p>
+<h3 id="カラム"><a class="header" href="#カラム">カラム</a></h3>
+<p>カラムは設定可能です: 右クリック（またはMacでは<kbd>Ctrl</kbd>をクリック）して表示するカラムを選択できます。
+カラムをドラッグして並べ替えることもできます。カラムをクリックすると、そのカラムでソートされます。
+再度クリックすると、ソート順が逆になります。ただし、QuestionとAnswerのカラムでのソートはできません。</p>
+<p>すべてのカラムは、<a href="#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%83%A2%E3%83%BC%E3%83%89">カードモードとノートモード</a>の両方で利用できますが、
+名前やデータが若干異なる場合があります。以下の表は、両モードの動作をリストしています。</p>
+<!-- prettier-ignore -->
+<div class="table-wrapper"><table><thead><tr><th>Column</th><th>カード モード</th><th>ノート モード</th></tr></thead><tbody>
+<tr><td>回答</td><td>カードの裏面は、質問が剥がされた1行で表示されます。カードタイプエディターで<a href="templates/styling.html#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E5%A4%96%E8%A6%B3">カスタムフォーマット</a>を選択することもできます。代わりに｡</td><td>カード モードと同じですが、メモの最初のカードのみが対象です。</td></tr>
+<tr><td>カード(s)</td><td>カードのテンプレートの名前。</td><td>ノートが持つカードの数。</td></tr>
+<tr><td>カードの変更日時</td><td>カードに変更が行われた最後の日時（例：カードを復習し、復習履歴と間隔が更新された場合）。</td><td>ノートのカードの中で変更が行われた最後の日時。</td></tr>
+<tr><td>作成日時</td><td>カードのノートと同じ。</td><td>ノートが作成された日付。</td></tr>
+<tr><td>デッキ</td><td>カードが所属するデッキの名前。</td><td>ノートのカードが所属する異なるデッキの数、またはすべてのカードが同じデッキに所属する場合はデッキの名前。</td></tr>
+<tr><td>期限</td><td>復習や（再）習得中のカードの期限、および新しいカードのキュー内の位置。カードが中断されたり埋められた場合は角括弧で囲まれます。タイプによるソートが行われ、その後に日付または位置によるソートが行われます。</td><td>ノートの次の復習や（再）学習カードの期限で、中断されていない、埋められていない、フィルターデッキに含まれていないカードの期限。</td></tr>
+<tr><td>(平均) イーズ</td><td>カードが新しい場合を除くイーズの値。</td><td>新しいカードではないノートのカードの平均イーズ。</td></tr>
+<tr><td>(平均) インターバル</td><td>カードが復習または再習得中の場合のインターバルの値。</td><td>復習または再習得中のノートのカードの平均インターバル。</td></tr>
+<tr><td>ラプス</td><td>カードが「もう一度」と評価された回数。</td><td>ノートのすべてのカードの合計ラプス。</td></tr>
+<tr><td>ノート</td><td>カードのノートと同じ。</td><td>ノートのノートタイプの名前。</td></tr>
+<tr><td>ノートの変更日時</td><td>カードのノートと同じ。</td><td>ノート（フィールドの内容など）が編集された最後の日時。</td></tr>
+<tr><td>質問</td><td>カードの表面を1行で表示します。カードタイプエディタで<a href="templates/styling.html#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E5%A4%96%E8%A6%B3">カスタムフォーマット</a>を選択することもできます。</td><td>カードモードと同じですが、ノートの最初のカードに対してのみです。</td></tr>
+<tr><td>復習</td><td>カードが復習された回数。</td><td>ノートのすべてのカードの合計復習カウント。</td></tr>
+<tr><td>ソートフィールド</td><td>カードのノートと同じ。</td><td>ノートタイプのソートフィールドとして定義されたノートのフィールドの内容。このフィールドのみが表示およびソートされます。編集エリアで**フィールド...**をクリックしてソートフィールドを変更できます。</td></tr>
+<tr><td>タグ</td><td>カードのノートと同じ。</td><td>ノートのタグ。</td></tr>
+</tbody></table>
+</div>
+<h2 id="編集エリア"><a class="header" href="#編集エリア">編集エリア</a></h2>
+<p>右下のエリアには現在選択されている行のノートが表示されます。詳細については、<a href="getting-started.html">はじめに</a>を参照してください。
+フォーマットボタンについての詳細は、<a href="editing.html">編集</a>を参照してください。</p>
+<p>現在選択されているカードのプレビューを確認するには、編集エリアの上部にある<strong>プレビュー</strong>ボタンをクリックします。
+これにより、カードのタイプアンサーフィールドが表示されないため、カードを素早くプレビューすることができます。
+ノートモードでは、プレビューは選択したノートの最初のカードに対して表示されます。</p>
+<h2 id="メニューとアクション"><a class="header" href="#メニューとアクション">メニューとアクション</a></h2>
+<p>ブラウザウィンドウの上部には、さまざまなメニューがあるツールバーがあり、それぞれのメニューにはブラウザで実行できるさまざまなアクションが用意されています。</p>
+<h3 id="編集"><a class="header" href="#編集">編集</a></h3>
+<!-- prettier-ignore -->
+<div class="table-wrapper"><table><thead><tr><th>名前</th><th>アクション</th></tr></thead><tbody>
+<tr><td>元に戻す</td><td>直前に実行された操作を元に戻します。</td></tr>
+<tr><td>すべて選択</td><td>表示されているすべての行を選択します。</td></tr>
+<tr><td>ノートを選択</td><td>現在選択されているノートのみを表示し、すべての行を選択します。</td></tr>
+<tr><td>選択を反転</td><td>選択されていない行を選択し、現在選択されている行を選択解除します。</td></tr>
+<tr><td>フィルターデッキを作成</td><td><a href="filtered-decks.html#%E6%89%8B%E5%8B%95%E3%81%A7%E3%81%AE%E4%BD%9C%E6%88%90">フィルターデッキ</a>ダイアログを表示し、現在のブラウザ検索をフィルターとして設定します。代わりに2番目のフィルターを設定するには<kbd>Alt</kbd> / <kbd>Option</kbd>を使用します（スケジューラバージョン2以上が必要です）。</td></tr>
+</tbody></table>
+</div>
+<h3 id="ノート"><a class="header" href="#ノート">ノート</a></h3>
+<p>以下のアクションのほとんどは、選択されたノートに対して操作を行います。これらのアクションは、ノートモードでは選択された行を右クリックしたときのコンテキストメニューでも利用できます。カードモードでは、コンテキストメニューのサブメニューにあります。</p>
+<!-- prettier-ignore -->
+<div class="table-wrapper"><table><thead><tr><th>名前</th><th>アクション</th></tr></thead><tbody>
+<tr><td>ノートを追加</td><td><a href="editing.html#%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0">追加</a>ダイアログを開きます。</td></tr>
+<tr><td>コピーを作成</td><td>現在のノートの<a href="editing.html#%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0">エディタ</a>での<a href="browsing.html#%E9%87%8D%E8%A4%87%E3%81%AE%E6%A4%9C%E7%B4%A2">重複</a>を開き、カードのバリエーションを簡単に取得するためにわずかに変更できます。デフォルトでは、重複したカードは元のデッキと同じデッキに作成されます。</td></tr>
+<tr><td>ノートをエクスポート</td><td><a href="exporting.html">エクスポート</a>ダイアログを開きます。</td></tr>
+<tr><td>タグを追加</td><td>選択したすべてのノートに指定されたタグを追加します。</td></tr>
+<tr><td>タグを削除</td><td>タグを入力し、選択したすべてのノートからタグを削除します。</td></tr>
+<tr><td>未使用のタグをクリア</td><td>サイドバーから、ノートで使用されていないすべてのタグを削除します。</td></tr>
+<tr><td>マークを切り替え</td><td>現在のノートがマークされている場合（つまり、_マークされた_タグを持っている場合）、選択したすべてのノートのマークを解除します。現在のノートがマークされていない場合、選択したすべてのノートをマークします。</td></tr>
+<tr><td>ノートタイプを変更</td><td>選択したノートを別のタイプに変換します。たとえば、_Russian_ノートタイプと_Computer_ノートタイプがあるとしましょう。_Russian_ノートにコンピュータ関連のテキストを誤って追加した場合、このオプションを使用してその間違いを修正できます。カードのスケジュールは影響を受けません。ノートのタイプを変更するには、ワンウェイ同期が必要です。</td></tr>
+<tr><td>重複を検索</td><td><a href="#%E9%87%8D%E8%A4%87%E3%81%AE%E6%A4%9C%E7%B4%A2">重複</a>ダイアログを開きます。</td></tr>
+<tr><td>検索して置換</td><td><a href="#%E6%A4%9C%E7%B4%A2%E3%81%A8%E7%BD%AE%E6%8F%9B">検索して置換</a>ダイアログを開きます。</td></tr>
+<tr><td>ノートタイプを管理</td><td><a href="editing.html#%E3%83%8E%E3%83%BC%E3%83%88%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AE%E8%BF%BD%E5%8A%A0">ノートタイプ</a>ダイアログを開きます。</td></tr>
+<tr><td>削除</td><td>選択したすべてのノートとそのカードを削除します。個々のカードを削除することはできません。個々のカードは<a href="templates/intro.html">テンプレート</a>によって制御されます。</td></tr>
+</tbody></table>
+</div>
+<h3 id="カード"><a class="header" href="#カード">カード</a></h3>
+<p>以下のアクションは、現在選択されているカードに対して操作を行います。カードモードでは、選択した行を右クリックしたときのコンテキストメニューでも利用できます。ノートモードでは、コンテキストメニューのサブメニューにあります。</p>
+<!-- prettier-ignore -->
+<div class="table-wrapper"><table><thead><tr><th>名前</th><th>アクション</th></tr></thead><tbody>
+<tr><td>デッキ変更</td><td>現在選択されているカードを別のデッキに移動します。</td></tr>
+<tr><td>期限設定</td><td>カードを復習カードに変更し、特定の日付に期限を設定します。学習スケジュールが中断された場合に、数日前後にカードを移動するのに便利です。 <code>60-90</code> のような範囲を入力すると、選択したカードは現在から60日から90日後に期限が設定されます。新しいカードは同じ遅延時間で間隔が設定されますが、復習は現在の間隔を変更せずに再スケジュールされます（範囲の末尾に '!' を含めると例外です）。 （手動でカードをスケジュールする場合、回答時間は記録されません。スケジュールは復習の外でも実行できるため、Ankiはその時点でどのカードが表示されるかを認識していません。）</td></tr>
+<tr><td>忘却</td><td>現在選択されているカードを新しいキューの末尾に移動します。既存の復習履歴は保持されます。バージョン2.1.50以降では、元のカード位置を復元するオプションと、カードの遅延と繰り返しカウンターをリセットするオプションがあります。</td></tr>
+<tr><td>位置変更</td><td>新しいカードが表示される順序を変更します。[table](#カード ノートテーブル) セクションで説明されているように、<em>due</em> 列を有効にすることで既存の位置を確認できます。複数のカードが選択されている場合、位置変更コマンドは順番に各カードに増加する番号を適用します。デフォルトでは、各カードごとに番号が1ずつ増加しますが、"step" 設定を変更することで調整できます。 <strong>既存のカードの位置をシフトする</strong> オプションを選択すると、現在存在するカードの間にカードを挿入し、現在存在するカードを分離します。たとえば、5つのカードがあり、1と2の間に3、4、5を移動したい場合、この設定を選択すると、カードの順序は1、3、4、5、2になります。一方、このオプションをオフにすると、1と2は同じ位置番号を取得します（したがって、同じ番号のカードのうちどのカードが最初に表示されるかは予測できません）。有効にすると、より高い位置のカードは変更され、変更されたカードは次回同期時に送信する必要があります。</td></tr>
+<tr><td>一時停止の切り替え</td><td>選択したすべてのカードの一時停止を切り替えます。現在のカードが一時停止されているかどうかによって、選択したカードの一時停止が解除されるかどうかが決まります。</td></tr>
+<tr><td>フラグ</td><td>選択したすべてのカードのフラグを切り替えます。現在のカードに選択したフラグが追加されるか削除されるかは、フラグの状態によります。</td></tr>
+<tr><td>情報</td><td>現在のカードに関するさまざまな情報を表示します。復習履歴を含む。詳細については、<a href="stats.html#%E3%82%AB%E3%83%BC%E3%83%89%E6%83%85%E5%A0%B1">Card Info</a> を参照してください。</td></tr>
+</tbody></table>
+</div>
+<h3 id="移動"><a class="header" href="#移動">移動</a></h3>
+<p>このメニューは、ブラウザのさまざまな部分にキーボードショートカットを提供し、カードリストを上下に移動するためのものです。</p>
+<h2 id="検索と置換"><a class="header" href="#検索と置換">検索と置換</a></h2>
+<p>このダイアログでは、ノートのテキストを置換することができます。上記の説明にあるように、ツールバーやテーブルのコンテキストメニューから利用できます。</p>
+<p>最初の入力フィールドは、置換されるテキストです。2番目のフィールドは、置換後のテキストです。次に、Ankiがテキストを置換する場所を指定するドロップダウンメニューがあります：ノートのタグ（Anki 2.1.45+が必要）、すべてのフィールド、または特定のフィールドのみ（選択したノートに属するフィールドのみがリストされます）。</p>
+<p>デフォルトでは、選択したノートのみが影響を受けます。この制限を解除したい場合は、「選択したノートのみ」のチェックボックスを外すことができます（Anki 2.1.45+が必要）。</p>
+<p>正規表現オプションを使用すると、複雑な置換を行うことができます。例えば、次のようなテキストがフィールドにあるとします：</p>
+<pre><code>&lt;img src="pic.jpg" /&gt;
+</code></pre>
+<p>次の設定を使用します：</p>
+<p><img src="media/find_and_replace.png" alt="検索と置換ダイアログ" /></p>
+<p>（Anki 2.1.28以前のバージョンでは、<code>${1}</code> を <code>\1</code> に置き換える必要があります。）</p>
+<p>すると、フィールドの内容は次のように変わります：</p>
+<pre><code>pic.jpg
+</code></pre>
+<p>正規表現についての詳しい説明は、このドキュメントの範囲外です。ウェブ上にはいくつかの構文ガイドがあります：</p>
+<ul>
+<li>Anki 2.1.28+の場合、<a href="https://docs.rs/regex/latest/regex/index.html#syntax">https://docs.rs/regex/latest/regex/index.html#syntax</a>を参照してください。</li>
+<li>古いAnkiバージョンの場合、<a href="http://docs.python.org/library/re.html">http://docs.python.org/library/re.html</a>を参照してください。</li>
+</ul>
+<h2 id="重複の検索"><a class="header" href="#重複の検索">重複の検索</a></h2>
+<p><strong>ノート &gt; 重複を検索</strong> オプションを使用して、同じ内容のノートを検索することができます。ウィンドウを開くと、Ankiはすべてのノートタイプを調べ、すべての可能なフィールドのリストを表示します。<em>Back</em> フィールドで重複を検索したい場合は、リストから選択して <strong>検索</strong> をクリックします。</p>
+<p>デフォルトでは、指定したフィールドを持つすべてのノートタイプで検索されます。これは、手動でカードを追加するときの重複チェックとは異なり、単一のノートタイプに限定されません。</p>
+<p><strong>オプションフィルター</strong>テキストボックスを使用すると、Ankiが重複を検索する範囲を絞り込むことができます。例えば、「French Vocab」と「French Verbs」のノートタイプでのみ重複を検索したい場合は、次のように入力します：</p>
+<pre><code>"note:french vocab" または "note:french verbs"
+</code></pre>
+<p>または特定のデッキでのみ重複を検索したい場合は、次のように入力します：</p>
+<pre><code>"deck:myDeck"
+</code></pre>
+<p>検索の構文は、ブラウザで検索するときと同じです。詳細については、<a href="searching.html">検索</a>を参照してください。</p>
+<p>検索結果リストのリンクをクリックすると、そのセット内の重複したノートが表示されます。検索結果が多数の重複を示す場合は、代わりに <strong>重複をタグ付け</strong> ボタンをクリックすることをお勧めします。これにより、すべての一致するノートに <em>duplicate</em> タグが付けられます。その後、ブラウザでこのタグを検索し、同じ画面からすべてを処理することができます。</p>
+<!--
+
+# Browsing
+
+
+
+The Browse window allows you to search through your cards and notes, and edit
+them. It is opened by clicking **Browse** in the main window, or by pressing
+<kbd>B</kbd>. It is comprised of three sections: the _sidebar_ on the
+left, the _card/note table_ on the top right, and the _editing area_ on the bottom
+right. By positioning the mouse between two sections, it is possible to click
+and drag to expand one section and shrink the other.
+
+## Table Modes
+
+![Table Modes](media/browser_table_modes.png)
+
+Anki 2.1.45+ offers two modes: either cards or notes are shown in the data table.
+You can change the current mode by clicking the switch at the top, to the left
+of the search area, or pressing <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> or
+<kbd>Cmd</kbd>+<kbd>Opt</kbd>+<kbd>T</kbd>. The switch also indicates if **C**ards
+or **N**otes are currently shown.
+
+**Note**: For the sake of simplicity, this manual generally assumes the Cards
+mode to be the active one. Whenever selecting/finding/etc. "cards" is mentioned,
+the reader may substitute it for "cards or notes depending on the active mode".
+
+## Sidebar
+
+The _sidebar_ on the left allows quick access to common search terms. On Anki
+2.1.45+, it also provides a searchbar, facilities to edit tags and decks, and a
+choice of two different tools, which are discussed in the following sections.
+You can switch tools using the toolbar at the top of the sidebar or the shortcuts
+<kbd>Alt</kbd>+<kbd>1</kbd>/<kbd>2</kbd>.
+
+### Search Tool
+
+![Search Tool](media/browser_search_tool.png)
+
+With this tool, the sidebar behaves as in previous versions: Clicking on an item
+will search for it.
+
+You can hold down <kbd>Ctrl</kbd> (<kbd>Command</kbd> on Mac) while clicking in
+order to append the clicked item to the current search with an AND condition,
+instead of starting a new search. If you wanted to show _learning_ cards that were
+also in the German deck for instance, you could click on "Learning",
+then <kbd>Ctrl</kbd>-click on "German".
+
+You can hold down <kbd>Shift</kbd> to create an OR search instead of an AND. For
+example, you could click one deck, then <kbd>Shift</kbd>-click another to show
+cards from either of the decks in the same view.
+
+You can hold down <kbd>Alt</kbd> (<kbd>Option</kbd> on Mac) in order to reverse the
+search (prepend a `-`): for example, to show all cards in a current deck that
+do _not_ have a certain tag. <kbd>Alt</kbd>/<kbd>Option</kbd> can be combined with
+either <kbd>Ctrl</kbd> or <kbd>Shift</kbd> (e.g. clicking with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>
+will result in adding a new search term that is negated).
+
+On Anki 2.1.39+, you can also hold down both <kbd>Ctrl</kbd> and
+<kbd>Shift</kbd> together when clicking a search term to replace all occurrences of the
+same kind of search with the new one.
+Let's say you had previously typed in a complicated search expression like
+`deck:Swahili (is:due or tag:important)`
+and now want to perform the same search for your Urdu deck. You can hold down
+<kbd>Ctrl</kbd>+<kbd>Shift</kbd> while clicking the Urdu deck in the sidebar to obtain the
+following search expression:
+`deck:Urdu (is:due or tag:important)`.
+
+### Selection Tool
+
+![Selection Tool](media/browser_selection_tool2.png)
+
+The Selection tool allows for selecting multiple items at the same time by holding down <kbd>Ctrl</kbd>
+or <kbd>Shift</kbd> while clicking. It also enables drag-and-drop to reorder decks and
+tags.
+
+Here is an example: Say you have the tags `Math`, `Calculus`, and `Algebra`.
+Click on the `Calculus` tag, then <kbd>Ctrl</kbd>-click on the `Algebra` tag. Now both
+tags are selected, click and drag any of the two onto the `Math` tag to make them
+both children of this tag. Behind the scene, Anki has renamed the two tags to
+`Math::Calculus` and `Math::Algebra` respectively and updated your notes accordingly.
+
+Another use case for selecting multiple items is searching: If you right-click on
+a selection of items, you can choose **Search &gt; All/Any Selected**. This
+can be combined with keyboard modifiers as described in [Search Tool](#search-tool)
+to append the resulting search to the current search.
+
+### Saved Searches
+
+If you regularly search for the same thing,
+you can save the current search by right-clicking the topmost item in the sidebar,
+choosing “Save Current Search” and typing in a name.
+You can also drag and drop any sidebar item onto this area to add an equivalent
+saved search, effectively pinning it at the top.
+
+### Editing Items
+
+You can delete or rename tags, decks, and saved searches directly from the sidebar,
+from the right-click menu, or by using a shortcut key (<kbd>Del</kbd> and
+<kbd>F2</kbd> on Windows). Deletion even works for multiple items at once
+(see [Selection Tool](#selection-tool)).
+
+### Finding Items
+
+To find a certain item in the sidebar tree, type part of its name into the searchbar
+at the top to temporarily hide all items not matching the search.
+
+## Search Box
+
+Above the card list is a search box. You can type in various things
+there to search for cards. For information on the search syntax,
+see [Searching](searching.md).
+
+## Card/Note Table
+
+The table's rows represent cards or notes that match the current search.
+When you click on a row, the corresponding note will be shown in the bottom section.
+
+### Rows
+
+If you drag the mouse or hold <kbd>Ctrl</kbd> or <kbd>Command</kbd> to select multiple
+rows, the editor will be temporarily hidden. Various operations (such as
+changing the deck) can operate on multiple cards or notes at once, independent
+of the active mode. Therefore in Cards mode, a note is considered to be selected
+if any of its cards is selected, and in Notes mode, a card is considered to be selected
+if its note is selected.
+
+Other operations (like showing card information) only operate on a single card
+or note. This is called the _current_ card or note, which is usually the one that
+was last selected or clicked.
+In Cards Mode, again, the current note is the note of the current card and in Notes
+mode, the current card is the first card of the current note.
+
+The background colour will change depending on the card and note. In Cards mode,
+the first match will be used:
+
+1. if the card is **flagged**, use the flag colour,
+2. if the card is **suspended**, yellow,
+3. if the card's note is **marked**, purple.
+
+In Notes mode, colour is only applied to marked notes.\
+For more information about marked notes and suspended cards, see [Editing and More](studying.md#editing-and-more).
+
+### Columns
+
+The columns are configurable: right click on one (or <kbd>Ctrl</kbd>-click on a
+Mac) to choose which columns you'd like to see.
+You can drag columns to reorder them. Clicking on a column will sort by that column;
+click again to reverse the sort order. Note that you cannot sort by the Question
+and Answer columns.
+
+All columns are available for both [Cards and Notes mode](#table-modes)
+but sometimes with slightly different names and data. The following table lists
+the behaviours for both modes.
+
+
+
+| Column          | Cards mode                                                                                                                                                                                                                             | Notes mode                                                                                                                                                                                                     |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Answer          | The back side of the card in one line with the question stripped. You can also choose a [custom format](templates/styling.md#browser-appearance) in the card type editor instead.                                                      | The same as in Cards mode, only for the first card of the note.                                                                                                                                                |
+| Card(s)         | The name of the card's template.                                                                                                                                                                                                       | The number of cards the note has.                                                                                                                                                                              |
+| Card Modified   | The last time changes were made to the card (e.g. when you reviewed the card and the review history and interval were updated).                                                                                                        | The last time changes were made to one of the note's cards.                                                                                                                                                    |
+| Created         | The same as in Notes mode for the card's note.                                                                                                                                                                                         | The date the note was created.                                                                                                                                                                                 |
+| Deck            | The name of the deck the card is in.                                                                                                                                                                                                   | The number of different decks the note's cards are in, or the deck name if all cards are in the same deck.                                                                                                     |
+| Due             | The due date for cards in review or (re)learning, and the position in the new card queue for new cards. The line is wrapped in brackets if the card is suspended or buried. Sorting is done by type and only then by date or position. | The due date for the note's next due review or (re)learning card that is not suspended, buried or in a filtered deck.                                                                                          |
+| (Avg.) Ease     | The card's ease if it is not new.                                                                                                                                                                                                      | The average ease for the note's cards that are not new.                                                                                                                                                        |
+| (Avg.) Interval | The card's interval if the card is in review or relearning.                                                                                                                                                                            | The average interval for the note's cards that are in review or relearning.                                                                                                                                    |
+| Lapses          | How often the card was rated “Again”.                                                                                                                                                                                                  | The total lapses for all cards of the note.                                                                                                                                                                    |
+| Note            | The same as in Notes mode for the card's note.                                                                                                                                                                                         | The name of the note's notetype.                                                                                                                                                                               |
+| Note Modified   | The same as in Notes mode for the card's note.                                                                                                                                                                                         | The last time the note (e.g. the content of a field) was edited.                                                                                                                                               |
+| Question        | The front side of the card in one line. You can also choose a [custom format](templates/styling.md#browser-appearance) in the card type editor instead.                                                                                | The same as in Cards mode, only for the first card of the note.                                                                                                                                                |
+| Reviews         | How often the card has been reviewed.                                                                                                                                                                                                  | The total review count for all cards of the note.                                                                                                                                                              |
+| Sort Field      | The same as in Notes mode for the card's note.                                                                                                                                                                                         | The content of the note's field that is defined as the notetype's sort field. Only this one field can be displayed and sorted by. You can change the sort field by clicking **Fields...** in the editing area. |
+| Tags            | The same as in Notes mode for the card's note.                                                                                                                                                                                         | The note's tags.                                                                                                                                                                                               |
+
+## Editing Area
+
+The bottom right area displays the note of the currently selected row. For
+more information about cards and notes, see [Getting Started](getting-started.md).
+For more information on formatting buttons, see [Editing](editing.md).
+
+You can see a preview of what the currently selected card would look
+like when reviewing by clicking the **Preview** button at the top of the editing area.
+Note that this will not display any type-the-answer fields on your
+cards, which makes it easier to preview the cards quickly.
+In Notes mode, the preview is shown for the first card of the selected note.
+
+## Menus and Actions
+
+At the top of the browser window, you find a toolbar with various menus which in
+turn offer various actions that can be performed in the browser.
+
+### Edit
+
+
+| Name                 | Action                                                                                                                                                                                                                        |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Undo                 | Revert the most recently performed operation.                                                                                                                                                                                 |
+| Select All           | Select all rows displayed.                                                                                                                                                                                                    |
+| Select Notes         | Show only the currently selected notes and select all rows.                                                                                                                                                                   |
+| Invert Selection     | Select those rows not selected, and deselect the currently selected rows.                                                                                                                                                     |
+| Create Filtered Deck | Show the [filtered deck](filtered-decks.md#creating-manually) dialog and set the current browser search as a filter. Use <kbd>Alt</kbd> / <kbd>Option</kbd> to set the second filter instead (requires scheduler version 2+). |
+
+### Notes
+
+Most of the following actions operate on the selected notes. They are also available through
+a context menu when a selected row is right-clicked in Notes mode. In Cards mode,
+they can be found in a submenu of the context menu.
+
+
+| Name              | Action                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Add Notes         | Open the [Add](editing.md#adding-cards-and-notes) dialog.                                                                                                                                                                                                                                                                                                  |
+| Create Copy       | Open a [duplicate](browsing.md#finding-duplicates) of the current note in the [editor](editing.md#adding-cards-and-notes), which can be slightly modified to easily obtain variations of your cards. By default, the duplicate card will be created in the same deck as the original.                                                                      |
+| Export Notes      | Open the [Export](exporting.md) dialog.                                                                                                                                                                                                                                                                                                                    |
+| Add Tags          | Add provided tags to all selected notes.                                                                                                                                                                                                                                                                                                                   |
+| Remove Tags       | Enter tags and remove them from all selected notes.                                                                                                                                                                                                                                                                                                        |
+| Clear Unused Tags | Remove all tags from the sidebar that are not used by any notes.                                                                                                                                                                                                                                                                                           |
+| Toggle Mark       | If the current note is marked (i.e., has the _Marked_ tag), unmark all selected notes. If the current is not marked, mark all selected notes.                                                                                                                                                                                                              |
+| Change Note Type   | Convert the selected notes from one type to another. For example, imagine you have a _Russian_ notetype and a _Computer_ notetype, and you accidentally added some computer-related text into a _Russian_ note. You can use this option to fix that mistake. The scheduling of cards is not affected. Changing the type of a note requires a one-way sync. |
+| Find Duplicates   | Open the [Duplicates](#finding-duplicates) dialog.                                                                                                                                                                                                                                                                                                         |
+| Find and Replace  | Open the [Find and Replace](#find-and-replace) dialog.                                                                                                                                                                                                                                                                                                     |
+| Manage Note Types  | Open the [Notetypes](editing.md#adding-a-note-type) dialog.                                                                                                                                                                                                                                                                                                |
+| Delete            | Delete all selected notes and their cards. It is not possible to remove individual cards, as individual cards are controlled by the [templates](templates/intro.md).                                                                                                                                                                                       |
+
+### Cards
+
+The following actions operate on the currently selected cards. They are also available through
+a context menu when a selected row is rightclicked in Cards mode. In Notes mode,
+they can be found in a submenu of the context menu.
+
+
+
+| Name           | Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Change Deck    | Move currently selected cards to a different deck.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Set Due Date   | Turn cards into review cards, and make them due on a certain date. This can be useful for moving cards forward or back a few days when your study schedule is interrupted. Entering a range like `60-90` will make the selected cards due between 60 and 90 days from now. New cards will have their interval set to the same delay, but reviews will be rescheduled without changing their current interval, unless '!' is included at the end of the range. (Note that answer time is not recorded when manually scheduling cards, since the action can be performed even outside of review, and Anki isn’t aware of which card may or may not be shown at the time.)                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Forget         | Move currently selected cards to the end of the new queue. The existing review history is preserved. In 2.1.50+, there are options to restore the original card position, and to reset the card's lapse and repetition counters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Reposition     | Change the order new cards will appear in. You can find out the existing positions by enabling the _due_ column, as described in the [table](#cardnote-table) section above. If you run the reposition command when multiple cards are selected, it will apply increasing numbers to each card in turn. By default the number increases by one for each card, but this can be adjusted by changing the "step" setting. The **Shift position of existing cards** option allows you to insert cards between currently existing ones, pushing the currently existing ones apart. For instance, if you have five cards and you want to move 3, 4, and 5 between 1 and 2, selecting this setting would cause the cards to end up in the order 1, 3, 4, 5, 2. By contrast, if you turn this option off, 1 and 2 will get the same position number (and it will thus be unpredictable which of the cards with the same number comes up first). Please note that when enabled, any card with a higher position will be modified, and all of those changed cards will need to be sent the next time you sync. |
+| Toggle Suspend | [Suspend](studying.md#editing-and-more) or unsuspend all selected cards, depending on whether the current card is suspended or not.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Flag           | Toggle the flags of all selected cards. Whether a flag is added or removed depends on whether the current card has the chosen flag.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Info           | Show various information about the current card, including its review history. For more information, see [Card Info](stats.md#card-info).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+
+### Go
+
+This menu exists to provide keyboard shortcuts to jump to various
+parts of the browser, and to go up and down the card list.
+
+## Find and Replace
+
+This dialog allows for replacing text on notes. As described above, it is available
+from the toolbar and the table's context menu.
+
+The first input field is for the text that is going to be replaced, the second
+one for the replacement. Next, there is a dropdown menu that allows you to specify
+where Anki should look for text to replace: in a note's tags (requires Anki 2.1.45+),
+in all fields, or just in a specific field (only fields belonging to a selected
+note will be listed).
+
+By default, only selected notes will be affected. If you want to lift that
+restriction, you can untick the "selected notes only" checkbox (requires Anki 2.1.45+).
+
+The regular expression option allows you to perform complex replacements.
+For example, assume there is the following text in a field:
+
+    <img src="pic.jpg" />
+
+We use these settings:
+
+![Find and Replace dialog](media/find_and_replace.png)
+
+(Note that on Anki versions prior to 2.1.28, you would need to replace `${1}`
+with `\1`.)
+
+Then the assumed field content will change to:
+
+    pic.jpg
+
+A full discussion on regular expressions is outside the scope of this document.
+There are a number of syntax guides available on the web:
+
+- For Anki 2.1.28+, see <https://docs.rs/regex/latest/regex/index.html#syntax>.
+- For older Anki versions, see <http://docs.python.org/library/re.html>.
+
+## Finding Duplicates
+
+You can use the **Notes > Find Duplicates** option to search for notes that
+have the same content. When you open the window, Anki will look at all
+of your note types and present a list of all possible fields. If you
+want to look for duplicates in the _Back_ field, you’d select it from
+the list and then click **Search**.
+
+By default, it will search in all note types that have the field you provided.
+This differs from the duplicate check when you add cards manually, which
+is limited to a single note type.
+
+The **Optional filter** text box allows you to narrow down where Anki will
+look for duplicates. If you only want to search for duplicates in the
+"French Vocab" and "French Verbs" note types, you would enter:
+
+    "note:french vocab" or "note:french verbs"
+
+Or you might want to look only for duplicates in a particular deck, so
+you could use:
+
+    "deck:myDeck"
+
+The search syntax is the same as used when searching in the browser.
+For more information, see [Searching](searching.md).
+
+You can click one of the links in the search results list to display the
+duplicate notes in that set. If the search brings up a large number of
+duplicates, you may wish to instead click the **Tag Duplicates** button,
+which will tag all matching notes with _duplicate_. You can then search
+for this tag in the browser and handle them all from the same screen.
+
+-->
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="profiles.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="filtered-decks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="profiles.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="filtered-decks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

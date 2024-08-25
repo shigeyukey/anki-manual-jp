@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>追加/編集 - Ankiマニュアル</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/kbd.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">はじめに</a></li><li class="chapter-item "><a href="background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item "><a href="studying.html"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item expanded "><a href="editing.html" class="active"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item "><a href="templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="templates/fields.html"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item "><a href="preferences.html"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item "><a href="browsing.html"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item "><a href="stats.html"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item "><a href="math.html"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="contrib.html">貢献</a></li><li class="chapter-item affix "><a href="faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="resources.html">リソース</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Ankiマニュアル</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://forms.gle/jbnPepH378mVb2Sz5" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-envelope"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="追加編集"><a class="header" href="#追加編集">追加/編集</a></h1>
+<!-- toc -->
+<h2 id="カードとノートの追加"><a class="header" href="#カードとノートの追加">カードとノートの追加</a></h2>
+<p><a href="getting-started.html">基本</a>から思い出してください。Ankiではカードではなくノートを追加し、Ankiがカードを作成します。<a href="studying.html#%E3%83%87%E3%83%83%E3%82%AD">メインウィンドウ</a>で「追加」をクリックすると、「ノートの追加」ウィンドウが表示されます。</p>
+<p><img src="media/add_screen.png" alt="追加画面" /></p>
+<p>ウィンドウの左上には現在の<a href="getting-started.html#%E3%83%8E%E3%83%BC%E3%83%88%E3%82%BF%E3%82%A4%E3%83%97">ノートタイプ</a>が表示されます。「Basic」と表示されていない場合は、共有デッキをダウンロードしたときにいくつかのノートタイプを追加した可能性があります。以下のテキストは「Basic」が選択されていることを前提としています。</p>
+<p>ウィンドウの右上にはカードが追加される<a href="getting-started.html#%E3%83%87%E3%83%83%E3%82%AD">デッキ</a>が表示されます。新しいデッキにカードを追加したい場合は、デッキ名のボタンをクリックして「追加」をクリックします。</p>
+<p>ノートタイプの下にはいくつかのボタンと、「Front」と「Back」とラベル付けされたエリアが表示されます。「Front」と「Back」は<a href="getting-started.html#%E3%83%8E%E3%83%BC%E3%83%88%E3%81%A8%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89">フィールド</a>と呼ばれ、「フィールド…​」ボタンをクリックして追加、削除、名前の変更ができます。</p>
+<p>フィールドの下には「<strong>タグ</strong>」とラベル付けされた別のエリアがあります。タグはノートに付けるラベルで、ノートの整理や検索を容易にします。タグは空白のままにしておくことも、1つ以上追加することもできます。タグはスペースで区切られます。タグエリアに</p>
+<pre><code>vocab check_with_tutor
+</code></pre>
+<p>と表示されている場合、追加するノートには2つのタグが付けられます。</p>
+<p>フロントとバックにテキストを入力したら、「追加」ボタンをクリックするか、<kbd>Ctrl</kbd>+<kbd>Enter</kbd>（Macでは<kbd>Command</kbd>+<kbd>Enter</kbd>）を押してノートをコレクションに追加します。そうすると、カードも作成され、選択したデッキに配置されます。追加したカードを編集したい場合は、履歴ボタンをクリックして<a href="browsing.html">ブラウザ</a>で最近追加したカードを検索できます。</p>
+<p>ノートタイプとフィールドの間のボタンについての詳細は、<a href="editing.html">エディタ</a>セクションを参照してください。</p>
+<h3 id="重複チェック"><a class="header" href="#重複チェック">重複チェック</a></h3>
+<p>Ankiは最初のフィールドの一意性をチェックするため、例えば「apple」というFrontフィールドを持つカードを2枚入力すると警告が表示されます。一意性チェックは現在のノートタイプに限定されるため、複数の言語を学習している場合、各言語に異なるノートタイプを持っていれば、同じFrontを持つ2枚のカードは重複としてリストされません。</p>
+<p>効率のため、Ankiは他のフィールドの重複を自動的にチェックしませんが、ブラウザには「重複を探す」機能があり、定期的に実行することができます。</p>
+<h3 id="効果的な学習"><a class="header" href="#効果的な学習">効果的な学習</a></h3>
+<p>人それぞれ異なる方法で復習するのが好きですが、いくつかの一般的な概念を念頭に置いておくと良いでしょう。優れた入門記事として、SuperMemoサイトの<a href="https://super-memory.com/articles/20rules.htm">この記事</a>があります。特に：</p>
+<ul>
+<li>
+<p><strong>シンプルに保つ</strong>: カードが短いほど、復習が簡単になります。「念のため」に多くの情報を含めたくなるかもしれませんが、復習はすぐに苦痛になります。</p>
+</li>
+<li>
+<p><strong>理解せずに暗記しない</strong>: 言語を学習している場合、大量の単語リストを避けるようにしましょう。言語を学ぶ最良の方法は文脈の中で学ぶことであり、それはその単語が文中で使用されているのを見ることを意味します。同様に、コンピューターコースを学習していると想像してみてください。略語の山を暗記しようとすると、進歩するのが非常に難しくなります。しかし、略語の背後にある概念を理解する時間を取れば、略語を学ぶのがはるかに簡単になります。</p>
+</li>
+</ul>
+<h2 id="ノートタイプの追加"><a class="header" href="#ノートタイプの追加">ノートタイプの追加</a></h2>
+<p>基本的なノートタイプは、各面に単語やフレーズだけがあるシンプルなカードには十分ですが、フロントやバックに複数の情報を含めたいと思ったら、その情報を複数のフィールドに分ける方が良いでしょう。</p>
+<p>「でも、カードは1枚だけ欲しいのに、なぜフロントフィールドに音声、画像、ヒント、翻訳を含めてはいけないの？」と思うかもしれません。それを好むなら、それでも構いません。しかし、そのアプローチの欠点は、すべての情報が一緒に固まっていることです。ヒントでカードを並べ替えたい場合、それが他のコンテンツと混ざっているため、それを行うことはできません。また、音声をフロントからバックに移動するなどの操作も、すべてのノートに対して手作業でコピー＆ペーストする以外にはできません。コンテンツを別々のフィールドに保持することで、将来的にカードのレイアウトを調整するのがはるかに簡単になります。</p>
+<p>新しいノートタイプを作成するには、Ankiのメインウィンドウから「ツール」→「ノートタイプの管理」を選択します。次に「追加」をクリックして新しいノートタイプを追加します。すると、新しいタイプを基にするノートタイプを選択する画面が表示されます。「追加」はAnkiに付属しているタイプを基に新しく作成することを意味し、「クローン」は既にコレクションにあるタイプを基に新しく作成することを意味します。例えば、既にフランス語の語彙タイプを作成している場合、ドイツ語の語彙タイプを作成する際にそれをクローンすることができます。</p>
+<p>OKを選択すると、新しいタイプの名前を尋ねられます。ここでは、学習している教材の名前を選ぶのが良いでしょう。例えば「日本語」や「トリビア」などです。名前を選択したら、ノートタイプウィンドウを閉じ、追加ウィンドウに戻ります。</p>
+<h2 id="フィールドのカスタマイズ"><a class="header" href="#フィールドのカスタマイズ">フィールドのカスタマイズ</a></h2>
+<p>ノートを追加または編集する際、または「ノートタイプの管理」ウィンドウでノートタイプが選択されている間に、「フィールド…​」ボタンをクリックしてフィールドをカスタマイズします。</p>
+<p><img src="media/fields.png" alt="フィールド" /></p>
+<p>適切なボタンをクリックしてフィールドを追加、削除、または名前を変更できます。このダイアログおよびノート追加ダイアログでフィールドが表示される順序を変更するには、再配置ボタンを使用します。このボタンは、フィールドに持たせたい数値位置を尋ねます。例えば、フィールドを新しい最初のフィールドに変更したい場合、「1」と入力します。</p>
+<p>フィールド名として「Tags」、「Type」、「Deck」、「Card」、または「FrontSide」を使用しないでください。これらは<a href="templates/fields.html#%E7%89%B9%E6%AE%8A%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89">特別なフィールド</a>であり、正しく機能しません。</p>
+<p>画面下部のオプションでは、カードを追加および編集する際に使用されるフィールドのさまざまなプロパティを編集できます。これは、復習時にカードに表示される内容をカスタマイズする場所ではありません。それについては、<a href="templates/intro.html">テンプレート</a>セクションを参照してください。</p>
+<ul>
+<li>
+<p><strong>編集フォント</strong>: ノートを編集する際に使用するフォントとサイズをカスタマイズできます。重要でない情報を小さくしたり、読みづらい外国語の文字を大きくしたりするのに便利です。ここで行った変更は、復習時にカードが表示される方法には影響しません。それについては、<a href="templates/intro.html">テンプレート</a>セクションを参照してください。ただし、「答えを入力する」機能を有効にしている場合、入力したテキストはここで定義されたフォントサイズを使用します。（答えを入力する際の実際のフォントフェイスを変更する方法については、<a href="templates/fields.html#%E7%AD%94%E3%81%88%E3%81%AE%E7%A2%BA%E8%AA%8D">答えの確認</a>セクションを参照してください。）</p>
+</li>
+<li>
+<p><strong>このフィールドでソート…​</strong>: Ankiにこのフィールドをブラウザのソートフィールド列に表示させるよう指示します。これを使用して、そのフィールドでカードをソートできます。一度にソートフィールドにできるのは1つのフィールドだけです。</p>
+</li>
+<li>
+<p><strong>テキスト方向を逆にする</strong>: アラビア語やヘブライ語など、右から左（RTL）にテキストを表示する言語を学習している場合に便利です。この設定は現在、編集時にのみ制御されます。復習時にテキストが正しく表示されるようにするには、<a href="templates/styling.html#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AE%E6%96%B9%E5%90%91">テンプレート</a>を調整する必要があります。</p>
+</li>
+<li>
+<p><strong>デフォルトでHTMLエディタを使用</strong>: フィールドを直接HTMLで編集するのを好む場合に便利です。</p>
+</li>
+<li>
+<p><strong>デフォルトで折りたたむ</strong>: フィールドは折りたたみ/展開できます。アニメーションは<a href="preferences.html">設定</a>で無効にできます。</p>
+</li>
+<li>
+<p><strong>無条件検索から除外（遅い）</strong>: 特定のフィールドの内容を無条件検索（特定のフィールドに限定されない検索）に表示させたくない場合に使用できます。</p>
+</li>
+</ul>
+<p>フィールドを追加した後、カードのフロントまたはバックにそれらを追加したくなるでしょう。それについての詳細は、<a href="templates/intro.html">テンプレート</a>セクションを参照してください。</p>
+<h2 id="デッキノートタイプの変更"><a class="header" href="#デッキノートタイプの変更">デッキ/ノートタイプの変更</a></h2>
+<p>追加中に、左上のボタンをクリックしてノートタイプを変更し、右上のボタンをクリックしてデッキを変更できます。開いたウィンドウでは、デッキやノートタイプを選択するだけでなく、新しいデッキを追加したり、ノートタイプを管理したりすることもできます。</p>
+<h2 id="コンテンツの整理"><a class="header" href="#コンテンツの整理">コンテンツの整理</a></h2>
+<h3 id="デッキの適切な使用"><a class="header" href="#デッキの適切な使用">デッキの適切な使用</a></h3>
+<p><a href="getting-started.html#%E3%83%87%E3%83%83%E3%82%AD">デッキ</a>は、英語、地理など、別々に学習したい広範なカテゴリにコンテンツを分割するために設計されています。コンテンツを整理するために「地理の教科書第1章」や「食べ物の動詞」などの小さなデッキをたくさん作成したくなるかもしれませんが、以下の理由からこれは推奨されません：</p>
+<ul>
+<li>
+<p>小さなデッキがたくさんあると、カードが認識可能な順序で表示される可能性があります。古いスケジューラーバージョンでは、新しいカードはデッキ順にしか導入できません。そして、各デッキを順番にクリックする予定であれば（これは遅い）、すべての「第1章」や「食べ物の動詞」の復習が一緒に表示されることになります。これにより、文脈からカードを推測できるため、カードを答えるのが簡単になりますが、記憶が弱くなります。Ankiの外で単語やフレーズを思い出す必要があるとき、関連するコンテンツが最初に表示されるという贅沢は常にあるわけではありません！</p>
+</li>
+<li>
+<p>以前のAnkiバージョンほどの問題ではありませんが、数百のデッキを追加すると遅くなる可能性があり、数千のアイテムを持つ非常に大きなデッキツリーは、Ankiバージョン2.1.50以前ではデッキリストの表示を実際に壊す可能性があります。</p>
+</li>
+</ul>
+<h3 id="タグの使用"><a class="header" href="#タグの使用">タグの使用</a></h3>
+<p>たくさんの小さなデッキを作成する代わりに、タグやフィールドを使用してコンテンツを分類する方が良いアイデアです。タグは検索結果を向上させ、特定のコンテンツを見つけやすくし、コレクションを整理するのに役立ちます。
+タグやフラグを効果的に使用する方法はたくさんあり、事前にどのように使用したいかを考えることで、最適な方法を決定するのに役立ちます。</p>
+<p>カードを整理するためにデッキやサブデッキを使用することを好む人もいますが、タグを使用することには大きな利点があります。1つのノートに複数のタグを追加できますが、1つのカードは1つのデッキにしか属せないため、タグはほとんどの場合、デッキよりも強力で柔軟な分類システムです。タグもデッキと同じようにツリー状に整理できます。<a href="getting-started.html#%E3%83%87%E3%83%83%E3%82%AD">デッキと同じ方法で</a>。</p>
+<p>例えば、「食べ物の動詞」デッキを作成する代わりに、それらのカードをメインの言語学習デッキに追加し、「食べ物」と「動詞」のタグを付けることができます。各カードには複数のタグを付けることができるため、すべての動詞や食べ物に関連する語彙、または食べ物に関連するすべての動詞を<a href="searching.html#%E3%82%BF%E3%82%B0-%E3%83%87%E3%83%83%E3%82%AD-%E3%82%AB%E3%83%BC%E3%83%89-%E3%83%8E%E3%83%BC%E3%83%88">検索</a>することができます。</p>
+<p>タグは編集ウィンドウや<a href="browsing.html">ブラウザ</a>から追加でき、そこでタグを追加、削除、名前変更、整理することもできます。タグは<a href="getting-started.html#%E3%83%8E%E3%83%BC%E3%83%88%E3%81%A8%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89">ノート</a>レベルで機能するため、兄弟カードを持つカードにタグを付けると、すべての兄弟カードにもタグが付けられます。単一のカードにタグを付けたいが、その兄弟カードには付けたくない場合は、代わりにフラグを使用することを検討してください。</p>
+<h3 id="フラグの使用"><a class="header" href="#フラグの使用">フラグの使用</a></h3>
+<p>フラグはタグに似ていますが、復習ウィンドウで習得中に画面の右上に色付きのフラグアイコンが表示されます。ブラウズ画面でフラグ付きカードを検索したり、ブラウザからフラグの名前を変更したり、フラグ付きカードからフィルターデッキを作成したりすることもできますが、タグとは異なり、1枚のカードには一度に1つのフラグしか付けられません。もう1つの重要な違いは、フラグは<a href="getting-started.html#%E3%82%AB%E3%83%BC%E3%83%89">カード</a>レベルで機能するため、兄弟カードを持つカードにフラグを付けても、その兄弟カードには影響がないことです。</p>
+<p>復習中に直接カードにフラグを付けたり解除したりするには、<kbd>CTRL</kbd> + <kbd>1-7</kbd>（Windowsの場合）または<kbd>CMD</kbd> + <kbd>1-7</kbd>（Macの場合）を押します。また、<a href="browsing.html">ブラウザ</a>からもフラグを付けたり解除したりできます。</p>
+<h3 id="マーク済みタグ"><a class="header" href="#マーク済みタグ">マーク済みタグ</a></h3>
+<p>Ankiは「marked」というタグを特別に扱います。復習画面とブラウズ画面には、「marked」タグを追加および削除するオプションがあります。復習画面では、現在のカードのノートにそのタグがある場合、星が表示されます。また、ノートがマークされている場合、ブラウズ画面ではカードが異なる色で表示されます。</p>
+<p>注意: マーキングは主に古いAnkiバージョンとの互換性のために残されています。ほとんどのユーザーは<a href="editing.html#%E3%83%95%E3%83%A9%E3%82%B0%E3%81%AE%E4%BD%BF%E7%94%A8">フラグ</a>を使用することをお勧めします。</p>
+<h3 id="フィールドの使用"><a class="header" href="#フィールドの使用">フィールドの使用</a></h3>
+<p>非常に整理整頓が好きな人のために、ノートに「book」や「page」などのフィールドを追加してコンテンツを分類することができます。Ankiは特定のフィールドでの検索をサポートしているため、<code>"book:my book" page:63</code>のように検索して、すぐに探しているものを見つけることができます。</p>
+<h3 id="カスタム学習とフィルターデッキ"><a class="header" href="#カスタム学習とフィルターデッキ">カスタム学習とフィルターデッキ</a></h3>
+<p><a href="filtered-decks.html">カスタム学習とフィルターデッキ</a>を使用すると、検索用語から一時的なデッキを作成できます。これにより、ほとんどの時間は単一のデッキでコンテンツを混ぜて復習できます（最適な記憶のため）。しかし、テスト前など特定の資料に集中する必要がある場合には、一時的なデッキを作成することができます。一般的なルールとして、常に別々に学習したいコンテンツがある場合は、それを通常のデッキに入れるべきです。時々別々に学習する必要がある場合（テスト前、バックログがあるときなど）は、タグ、フラグ、マーク、またはフィールドから作成されたフィルターデッキの方が適しています。</p>
+<h2 id="編集機能"><a class="header" href="#編集機能">編集機能</a></h2>
+<p>エディタは<a href="editing.html">ノートを追加</a>する際、復習中に<a href="studying.html#%E7%B7%A8%E9%9B%86%E3%81%A8%E3%81%9D%E3%81%AE%E4%BB%96">ノートを編集</a>する際、または<a href="browsing.html">ブラウズ</a>する際に表示されます。</p>
+<p><img src="media/editor_icons.png" alt="エディタアイコン" /></p>
+<p>左上には、<a href="editing.html#%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA">フィールド</a>と<a href="templates/intro.html">カード</a>ウィンドウを開く2つのボタンがあります。</p>
+<p>右側にはフォーマットを制御するボタンがあります。太字、斜体、下線はワープロソフトのように機能します。次の2つのボタンは、テキストを下付き文字または上付き文字にするためのもので、H<sub>2</sub>Oのような化学式やx<sup>2</sup>のような簡単な数式に便利です。その後、テキストの色を変更するための2つのボタンがあります。</p>
+<p>消しゴムボタンは、選択したテキストのフォーマットをすべてクリアします（テキストの色、太字かどうかなどを含む）。次の3つのボタンは、リストの作成、テキストの配置、テキストのインデントを行います。</p>
+<p>クリップボタンを使用して、コンピュータのハードドライブからオーディオ、画像、ビデオを選択してノートに添付できます。あるいは、メディアをコンピュータのクリップボードにコピーして（例えば、ウェブ上の画像を右クリックして「画像をコピー」を選択）、それを配置したいフィールドに貼り付けることもできます。メディアに関する詳細は、<a href="media.html">メディア</a>セクションを参照してください。</p>
+<p>マイクアイコンを使用すると、コンピュータのマイクから録音し、その録音をノートに添付できます。</p>
+<p>Fxボタンは、MathJaxや<a href="math.html">LaTeX</a>をノートに追加するためのショートカットを表示します。</p>
+<p>[…​]ボタンは、クローズノートタイプが選択されている場合に表示されます。
+<img src="media/cloze_icons.png" alt="クローズアイコン" /></p>
+<p><code>&lt;/&gt;</code>ボタンは、フィールドの基礎となるHTMLを編集するためのものです。
+<img src="media/html_icon.png" alt="HTMLアイコン" /></p>
+<p>Anki 2.1.45以降では、編集画面から直接スティッキーフィールドを調整できます。フィールドの右側にあるピンアイコンをクリックすると、ノートが追加された後もフィールドの内容がクリアされません。同じ内容を複数のノートに入力する場合に便利です。以前のAnkiバージョンでは、スティッキーフィールドはフィールド画面から切り替えられていました。</p>
+<p><img src="media/Pin_icon.png" alt="ピンアイコン" /></p>
+<p>ほとんどのボタンにはショートカットキーがあります。ボタンの上にマウスカーソルを置くと、そのショートカットが表示されます。</p>
+<p>テキストを貼り付けるとき、Ankiはデフォルトでほとんどのフォーマットを保持します。<kbd>Shift</kbd>キーを押しながら貼り付けると、Ankiはほとんどのフォーマットを削除します。設定で「Shiftキーなしで貼り付けるとフォーマットを削除」を切り替えて、デフォルトの動作を変更できます。</p>
+<h2 id="穴埋め問題"><a class="header" href="#穴埋め問題">穴埋め問題</a></h2>
+<p>「穴埋め問題」は、文中の1つ以上の単語を隠すプロセスです。例えば、次の文があるとします：</p>
+<pre><code>Canberra was founded in 1913.
+</code></pre>
+<p>…​そして「1913」に穴埋め問題を作成すると、文は次のようになります：</p>
+<pre><code>Canberra was founded in [...].
+</code></pre>
+<p>このようにして削除された部分は「隠された」と言われることがあります。</p>
+<p>穴埋め問題を使用する理由については、<a href="https://super-memory.com/articles/20rules.htm">こちら</a>のルール5を参照してください。</p>
+<p>Ankiは穴埋め問題を簡単に作成するための特別な穴埋め問題タイプのノートを提供しています。穴埋め問題ノートを作成するには、クローズノートタイプを選択し、「テキスト」フィールドにテキストを入力します。次に、隠したいテキストをマウスでドラッグして選択し、[…​]ボタンをクリックします。Ankiはテキストを次のように置き換えます：</p>
+<pre><code>Canberra was founded in {{c1::1913}}.
+</code></pre>
+<p>「c1」部分は、文に1つの穴埋め問題を作成したことを意味します。必要に応じて、複数の削除を作成できます。例えば、Canberraを選択して再度[…​]ボタンをクリックすると、テキストは次のようになります：</p>
+<pre><code>{{c2::Canberra}} was founded in {{c1::1913}}.
+</code></pre>
+<p>上記のノートを追加すると、Ankiは2つのカードを作成します。最初のカードは次のように表示されます：</p>
+<pre><code>Canberra was founded in [...].
+</code></pre>
+<p>…​質問に対して、答えには完全な文が表示されます。もう1つのカードは次のように表示されます：</p>
+<pre><code>[...] was founded in 1913.
+</code></pre>
+<p>同じカードに複数のセクションを隠すこともできます。上記の例では、c2をc1に変更すると、Canberraと1913の両方が隠された1枚のカードが作成されます。クローズを作成する際に<kbd>Alt</kbd>（Macでは<kbd>Option</kbd>）キーを押しながら行うと、Ankiは自動的に同じ番号を使用します。</p>
+<p>穴埋め問題は単語の境界に限定される必要はありません。上記の例で「Canberra」ではなく「anberra」を選択すると、質問は「C[…​] was founded in 1913」と表示され、ヒントが得られます。</p>
+<p>テキストと一致しないヒントを自分に与えることもできます。元の文を次のように置き換えると：</p>
+<pre><code>Canberra::city was founded in 1913
+</code></pre>
+<p>…​そして「Canberra::city」を選択して[…​]を押すと、Ankiはコロンの後のテキストをヒントとして扱い、次のようにテキストを変更します：</p>
+<pre><code>{{c1::Canberra::city}} was founded in 1913
+</code></pre>
+<p>カードが復習に表示されると、次のように表示されます：</p>
+<pre><code>[city] was founded in 1913.
+</code></pre>
+<p>穴埋め問題を正しく入力する能力をテストする方法については、<a href="templates/fields.html#%E7%AD%94%E3%81%88%E3%81%AE%E7%A2%BA%E8%AA%8D">答えの入力</a>セクションを参照してください。</p>
+<p>バージョン2.1.56以降、ネストされた穴埋め問題がサポートされています。例えば、次のように有効です：</p>
+<pre><code>{{c1::Canberra was {{c2::founded}}}} in 1913
+</code></pre>
+<p>内側のクローズは完全に外側のクローズ内にネストされています。部分的な重複はサポートされていません。例えば：</p>
+<pre><code>[...] founded in 1913 -&gt; Canberra was
+Canberra [...] in 1913 -&gt; was founded
+</code></pre>
+<p>「was」という単語が両方の削除に表示される場合です。</p>
+<p>バージョン2.1.56以前では、重複するテキストからクローズを作成する必要がある場合、クローズに別のテキストフィールドを追加し、それを<a href="templates/intro.html">テンプレート</a>に追加し、ノートを作成する際にテキストを2つの別々のフィールドに貼り付けます。例えば：</p>
+<pre><code>Text1フィールド: {{c1::Canberra was founded}} in 1913
+
+Text2フィールド: {{c2::Canberra}} was founded in 1913
+</code></pre>
+<p>デフォルトのクローズノートタイプには、各カードの答え側に表示される「Extra」という2番目のフィールドがあります。使用メモや追加情報を追加するために使用できます。</p>
+<p>クローズノートタイプはAnkiによって特別に扱われ、通常のノートタイプに基づいて作成することはできません。カスタマイズしたい場合は、既存のクローズタイプを他のノートタイプではなくクローンするようにしてください。フォーマットなどはカスタマイズできますが、クローズノートタイプに追加のカードテンプレートを追加することはできません。</p>
+<h2 id="画像穴埋め問題"><a class="header" href="#画像穴埋め問題">画像穴埋め問題</a></h2>
+<p>Anki 23.10+はネイティブで画像穴埋め問題カードをサポートしています。画像穴埋め問題（IO）ノートは、テキストではなく画像に基づく穴埋め問題の特別なケースであり、画像の一部を隠して、その隠された情報の知識をテストするカードを作成できます。</p>
+<p><img src="media/io.jpg" alt="画像穴埋め問題" /></p>
+<h3 id="画像の追加"><a class="header" href="#画像の追加">画像の追加</a></h3>
+<p>コレクションにIOカードを追加するには、追加画面を開き、「タイプ」をクリックして、組み込みのノートタイプのリストから「画像穴埋め問題」を選択します。次に、「画像を選択」をクリックして、コンピュータのハードドライブに保存されている画像ファイルを読み込むか、クリップボードにコピーされた画像がある場合は「クリップボードから画像を貼り付け」をクリックします。</p>
+<h3 id="ioカードの追加"><a class="header" href="#ioカードの追加">IOカードの追加</a></h3>
+<p>画像を読み込んだ後、IOエディタが開きます。左側のアイコンをクリックして、画像に好きなだけエリアを追加します。選択できる基本的な形状は3つあります：</p>
+<ul>
+<li>長方形</li>
+<li>楕円</li>
+<li>多角形</li>
+</ul>
+<p>各ノートには2つの異なるIOモードを選択できます：</p>
+<ul>
+<li><strong>すべて隠して1つを推測</strong>: すべてのエリアが隠され、習得中に1つのエリアだけが表示されます。</li>
+<li><strong>1つを隠して1つを推測</strong>: 1つのエリアだけが隠され、習得中に表示されます。他のエリアは表示されたままです。</li>
+</ul>
+<p><img src="media/io_modes.jpg" alt="画像穴埋め問題モード" /></p>
+<p>完了したら、画面下部の「追加」ボタンをクリックします。Ankiは、前のステップで追加した各形状または形状のグループに対してカードを追加し、通常通りに復習を開始できます。</p>
+<h2 id="ioノートの編集"><a class="header" href="#ioノートの編集">IOノートの編集</a></h2>
+<p>復習中に「編集」をクリックするか、ブラウザから直接IOノートを編集できます。使用できるツールがいくつかあります。注目すべきもの：</p>
+<ul>
+<li>選択: 1つ以上の形状を選択して移動、サイズ変更、削除、グループ化できます。</li>
+<li>ズーム: 画像を自由に移動し、マウスホイールでズームインまたはズームアウトできます。</li>
+<li>形状（長方形、楕円、多角形）: 新しい形状/カードを追加するために使用します。</li>
+<li>テキスト: 画像にテキストエリアを追加します。これらのテキストエリアは移動、サイズ変更、削除できますが、このツールを使用してもカードは作成されません。</li>
+<li>元に戻す/やり直す。</li>
+<li>ズームイン/アウト - ズームリセット。</li>
+<li>透過性の切り替え: このツールを使用して、隠されたエリアを一時的に表示します。</li>
+<li>削除: 選択した形状とテキストエリアを削除するために使用します。形状を削除しても、その関連カードは自動的に削除されないことに注意してください。その後、通常の穴埋め問題と同様に、ツール&gt;空のカードを使用する必要があります。</li>
+<li>複製。</li>
+<li>グループ選択: このツールを使用して形状のクラスターを作成し、同時に移動、サイズ変更、削除できます。2つ以上の単一形状をグループ化すると、1枚のカードしか作成されないことに注意してください。</li>
+<li>グループ解除選択: グループを選択してからこのボタンをクリックすると、各形状が再び独立します。</li>
+<li>配置: このツールを使用して、形状/テキストエリアを希望の位置に配置できます。</li>
+</ul>
+<p>IOカードを復習している間、「マスクの切り替え」ボタンが画像のすぐ下に表示されます。このボタンを使用すると、「すべて隠して1つを推測」モードでノートのすべての形状を一時的にクリアできます。</p>
+<h2 id="外国語文字とアクセントの入力"><a class="header" href="#外国語文字とアクセントの入力">外国語文字とアクセントの入力</a></h2>
+<p>すべての現代のコンピュータには、アクセントや外国語文字を入力するためのサポートが組み込まれており、複数の方法があります。おすすめの方法は、学びたい言語のキーボードレイアウトを使用することです。</p>
+<p>日本語、中国語、タイ語などの別のスクリプトを持つ言語には、その言語に特化したレイアウトがあります。</p>
+<p>アクセントを使用するヨーロッパの言語には独自のレイアウトがある場合がありますが、一般的な「国際キーボード」レイアウトで入力できることが多いです。これらは、アクセントを入力してからアクセントを付けたい文字を入力することで機能します。例えば、アポストロフィ（'）を入力してから文字a（a）を入力するとáになります。</p>
+<p>Windowsマシンに国際キーボードを追加するには、<a href="https://thegeekpage.com/how-to-add-us-international-keyboard-in-windows-10/">https://thegeekpage.com/how-to-add-us-international-keyboard-in-windows-10/</a>を参照してください。</p>
+<p>Macに追加するには、<a href="http://www.macworld.com/article/1147039/os-x/accentinput.html">http://www.macworld.com/article/1147039/os-x/accentinput.html</a>を参照してください。</p>
+<p>特定の言語のキーボードは同様の方法で追加されますが、ここではすべてをカバーすることはできません。詳細については、「macで日本語を入力する」、「Windows 10で中国語を入力する」などをGoogleで検索してみてください。</p>
+<p>右から左に書く言語を学んでいる場合、考慮すべき他の点がたくさんあります。詳細については、<a href="http://dotancohen.com/howto/rtl_right_to_left.html">このページ</a>を参照してください。</p>
+<p>Ankiが構築されているツールキットは、macOSでアクセント付き文字を選択するためにキーを押し続ける方法や、Windowsで<kbd>Alt</kbd>キーを押しながら数値コードを入力する方法など、いくつかの入力方法に対応するのが難しいです。</p>
+<h2 id="unicode正規化"><a class="header" href="#unicode正規化">Unicode正規化</a></h2>
+<p><code>á</code>のようなテキストは、特定のコードを使用してそのシンボルを表現する方法や、標準の<code>a</code>を使用してその上にアクセントのコードを追加する方法など、コンピュータ上で複数の方法で表現できます。異なるソースからの入力を混ぜたり、異なるコンピュータを使用したりすると問題が発生します。コンピュータがキーボード入力を一つの形式で処理し、コンテンツが別の形式で保存されている場合、結果が同じに見えても検索時に一致しません。</p>
+<p>検索でコンテンツが簡単に見つかるようにするために、Ankiはテキストを標準形式に正規化します。ほとんどのユーザーにとって、このプロセスは透明ですが、古代の日本語シンボルのような特定の資料を学んでいる場合、正規化プロセスがそれらをより現代的な同等物に変換することがあります。</p>
+<p>文字のバリアントを保持したい場合は、<a href="./misc.html">デバッグコンソール</a>で次のコマンドを実行して正規化をオフにします：</p>
+<pre><code class="language-python">mw.col.conf["normalize_note_text"] = False
+</code></pre>
+<p>その後に追加されたコンテンツは変更されません。その代わりに、オペレーティングシステム間で切り替えたり、混合ソースからコンテンツを貼り付けたりする場合、コンテンツの検索が難しくなる可能性があります。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="studying.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="templates/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="studying.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="templates/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

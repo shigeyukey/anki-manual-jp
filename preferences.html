@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>設定 - Ankiマニュアル</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/kbd.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">はじめに</a></li><li class="chapter-item "><a href="background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item "><a href="studying.html"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item "><a href="editing.html"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item "><a href="templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="templates/fields.html"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item expanded "><a href="preferences.html" class="active"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item "><a href="browsing.html"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item "><a href="stats.html"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item "><a href="math.html"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="contrib.html">貢献</a></li><li class="chapter-item affix "><a href="faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="resources.html">リソース</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Ankiマニュアル</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://forms.gle/jbnPepH378mVb2Sz5" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-envelope"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="設定"><a class="header" href="#設定">設定</a></h1>
+<!-- toc -->
+<p>設定は、Windows/Linuxではツールメニューから、MacではAnkiメニューからアクセスできます。</p>
+<h2 id="外観"><a class="header" href="#外観">外観</a></h2>
+<h3 id="一般"><a class="header" href="#一般">一般</a></h3>
+<p><strong>言語</strong><br />
+表示言語を変更します。翻訳の改善に協力することができます<a href="https://translating.ankiweb.net/">こちら</a></p>
+<h3 id="ユーザーインターフェース"><a class="header" href="#ユーザーインターフェース">ユーザーインターフェース</a></h3>
+<p><strong>テーマ</strong><br />
+ダーク（ナイト）モードにすると、Ankiのインターフェースが暗くなり、カードは黒い背景に白いテキストで表示されます。このオプションを有効にすると、いくつかのカードテンプレートを適切に動作させるために修正が必要になる場合があります。詳細については、<a href="templates/styling.html#%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89">ナイトモードのスタイリング</a>を参照してください。</p>
+<p>バージョン2.1.50以降では、日中モードとナイトモードを自動的に切り替えるオプションがあります。</p>
+<p><strong>ユーザーインターフェースのサイズ</strong><br />
+インターフェース要素が小さすぎると感じる場合は、この設定を増やしてみてください。</p>
+<p><strong>ウィンドウサイズのリセット</strong><br />
+すべてのウィンドウサイズと位置をデフォルト設定にリセットします。</p>
+<p><strong>ビデオドライバー</strong><br />
+Ankiのライブラリは、画面にコンテンツを描画するためにビデオドライバーを必要とします。異なるハードウェアおよびソフトウェア構成により、最適なドライバーは異なる場合があります。ANGLEおよびOpenGLはソフトウェアオプションよりもパフォーマンスが向上しますが、一部のシステムでは正しく機能しない場合があります。Macでは、ほとんどの場合、OpenGLオプションを使用することをお勧めします。</p>
+<p>注: バージョン2.1.50+（Qt6）を使用している場合は、<a href="./platform/windows/display-issues.html#qt6">このページ</a>を確認してください。</p>
+<h3 id="気を散らす要素の削減"><a class="header" href="#気を散らす要素の削減">気を散らす要素の削減</a></h3>
+<p>これらのオプションを使用すると、復習中に不要な要素を画面から削除できます。以下のことが可能です：</p>
+<ul>
+<li>復習中に上部および下部のバーを非表示にする。</li>
+<li>インターフェースをよりコンパクト/シンプルにする「ミニマリスト」モードを有効にする。</li>
+<li>一部のトランジション/アニメーションを無効にするためにモーションを減らす。</li>
+<li>ネイティブスタイリングとAnkiテーマの切り替え（Mac/Linuxのみ）。</li>
+</ul>
+<h2 id="復習"><a class="header" href="#復習">復習</a></h2>
+<h3 id="スケジューラー"><a class="header" href="#スケジューラー">スケジューラー</a></h3>
+<p><strong>v3 スケジューラー</strong><br />
+AnkiDroidを使用していない場合は、Anki v3スケジューラーの使用をお勧めします。詳細はこちらに記載されています：<br />
+<a href="https://shigeyukey.github.io/Anki-faqs-jp/the-2021-scheduler.html">https://shigeyukey.github.io/Anki-faqs-jp/the-2021-scheduler.html</a></p>
+<p><strong>大きなステップの学習カードを先に表示</strong><br />
+2.1スケジューラーが有効な場合にのみ表示されます。通常、1日以上の遅延がある学習カードは通常の復習の後に表示されます。チェックすると、Ankiはそれらを通常の復習の前に表示します。</p>
+<p><strong>レガシータイムゾーン処理</strong><br />
+詳細はこちらをご覧ください：<br />
+<a href="https://shigeyukey.github.io/Anki-faqs-jp/timezone-handling-changes.html">https://shigeyukey.github.io/Anki-faqs-jp/timezone-handling-changes.html</a></p>
+<p><strong>次の日の開始時刻</strong><br />
+Ankiが次の日のカードを表示し始める時間を制御します。デフォルト設定の午前4時は、真夜中頃に勉強している場合に、1回のセッションで2日分のカードが表示されないようにします。非常に遅くまで起きているか、非常に早く起きる場合は、通常寝ている時間に調整することをお勧めします。次の日の開始は現在のタイムゾーンに依存することに注意してください。また、日付の境界を越えるカードは、復習カードと同様に<a href="./deck-options.html#%E6%97%A5%E4%BB%98%E3%81%AE%E5%A2%83%E7%95%8C">予定された日の開始時に表示される</a>ことにも注意してください。</p>
+<p><strong>先取り学習の制限</strong><br />
+現在のデッキで学習するものがなくなったが、習得中のカードがある場合にAnkiがどのように動作するかを指定します。デフォルト設定の20分は、他にすることがない場合、20分未満の遅延があるカードを早めに表示するようにAnkiに指示します。これを0に設定すると、Ankiは常に完全な遅延を待ち、残りのカードが復習の準備ができるまでおめでとう画面を表示します。</p>
+<p><strong>タイムボックスの時間制限</strong><br />
+タイムボックスは、長い活動（例えば30分の勉強セッション）を小さなブロックに分割して集中力を高めるための技法です。タイムボックスの時間制限を0以外の分数に設定すると、Ankiは定期的に指定された時間内にどれだけのカードを学習できたかを表示します。</p>
+<p><strong>新しいカードと復習を混ぜる</strong><br />
+v1/v2スケジューラーが有効な場合にのみ表示されます。このドロップダウンボックスは、新しいカードがいつ表示されるかを制御します：復習と混ぜる、復習の前、または復習の後のいずれかです。</p>
+<h3 id="復習-1"><a class="header" href="#復習-1">復習</a></h3>
+<p><strong>音声付きカードに再生ボタンを表示</strong><br />
+音声付きカードの復習画面にクリック可能な（再）再生ボタンを表示するかどうかを指定します。</p>
+<p><strong>回答時に現在の音声を中断</strong><br />
+カードに回答する際に、現在再生中の音声ファイルを停止するかどうかを指定します。</p>
+<p><strong>残りのカード数を表示</strong><br />
+画面下部のカード数を非表示にするには、このオプションを無効にします。</p>
+<p><strong>回答ボタンの上に次の復習時間を表示</strong><br />
+カードがどれくらい先にスケジュールされているかを知るのに便利です。</p>
+<h2 id="編集"><a class="header" href="#編集">編集</a></h2>
+<h3 id="編集-1"><a class="header" href="#編集-1">編集</a></h3>
+<p><strong>クリップボードの画像をPNGとして貼り付け</strong><br />
+デフォルトでは、Ankiはクリップボードの画像をJPGファイルとして貼り付けてディスクスペースを節約します。このオプションを使用すると、代わりにPNG画像として貼り付けることができます。PNG画像は透明な背景をサポートし、ロスレスですが、通常はファイルサイズが大きくなります。</p>
+<p><strong>Shiftキーを押さずに貼り付けると書式が削除される</strong><br />
+デフォルトでは、太字や色などの書式は貼り付け時に保持されますが、<kbd>Shift</kbd>キーを押している場合は除外されます。このオプションはその動作を逆にします。</p>
+<p><strong>デフォルトデッキ</strong><br />
+ノートタイプとデッキの相互作用を制御します。デフォルトの「追加時に現在のデッキをデフォルトにする」は、Ankiが各デッキに対して最後に使用したノートタイプを保存し、次回そのデッキを選択したときに再度選択します（さらに、どこからでも追加を選択したときに現在のデッキが選択されます）。もう一つのオプション「ノートタイプに応じてデッキを変更する」は、各ノートタイプに対して最後に使用したデッキを保存します（追加を選択したときに追加ウィンドウを最後に使用したノートタイプに開きます）。各デッキに対して常に単一のノートタイプを使用する場合、こちらの方が便利かもしれません。</p>
+<p>最後に使用したデッキ/ノートタイプはカードを追加したときに更新されます。デッキを変更してカードを追加せずに追加ウィンドウを閉じた場合、それは保存されません。</p>
+<h3 id="ブラウジング"><a class="header" href="#ブラウジング">ブラウジング</a></h3>
+<p><strong>デフォルトの検索テキスト</strong><br />
+ブラウザでの開始検索テキストをカスタマイズできます（例：「deck:current」で開始する）。</p>
+<p><strong>検索時にアクセントを無視する（遅くなる）</strong><br />
+有効にすると、単純なテキスト検索で自動的に<a href="./searching.html#%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%B3%E3%83%88-%E7%B5%90%E5%90%88%E6%96%87%E5%AD%97%E3%82%92%E7%84%A1%E8%A6%96%E3%81%99%E3%82%8B">アクセントを無視</a>します。</p>
+<h3 id="インポートエクスポート"><a class="header" href="#インポートエクスポート">インポート/エクスポート</a></h3>
+<p><strong>レガシーインポート/エクスポート処理</strong><br />
+有効にすると、レガシー（2.1.55以前）のインポート/エクスポートコードが使用されます。このオプションは無効にすることをお勧めします。</p>
+<h2 id="同期"><a class="header" href="#同期">同期</a></h2>
+<p>このタブには、AnkiWebとの同期に関連するオプションが含まれています。</p>
+<h3 id="同期-1"><a class="header" href="#同期-1">同期</a></h3>
+<p><strong>音声と画像も同期する</strong><br />
+有効にすると、メディアもAnkiWebと同期されます。</p>
+<p><strong>プロファイルの開閉時に自動同期</strong><br />
+プロファイルを開く/閉じるときにAnkiWebと自動同期したくない場合は、これを無効にします。</p>
+<p><strong>定期的にメディアを同期する</strong></p>
+<p><strong>次回の同期時に一方向に変更を強制する</strong><br />
+このオプションが有効な場合、次回の同期時にアップロードまたはダウンロードするかどうかを尋ねられます。これは、誤って変更を加えた場合に、AnkiWebにある古いバージョンで上書きしたいときに便利です。</p>
+<h3 id="ankiwebアカウント"><a class="header" href="#ankiwebアカウント">AnkiWebアカウント</a></h3>
+<p>ログインしている場合、ログアウトをクリックするとログアウトします。</p>
+<h3 id="自己ホスト型同期サーバー"><a class="header" href="#自己ホスト型同期サーバー">自己ホスト型同期サーバー</a></h3>
+<p>カスタム同期サーバーオプションの詳細については、<a href="./sync-server.html">このセクション</a>を参照してください。</p>
+<h2 id="バックアップ"><a class="header" href="#バックアップ">バックアップ</a></h2>
+<p>自動バックアップの詳細については、マニュアルの<a href="backups.html#%E8%87%AA%E5%8B%95%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97">こちら</a>のセクションを参照してください。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="templates/errors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="deck-options.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="templates/errors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="deck-options.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

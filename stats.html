@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>統計 - Ankiマニュアル</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/kbd.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">はじめに</a></li><li class="chapter-item "><a href="background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item "><a href="studying.html"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item "><a href="editing.html"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item "><a href="templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="templates/fields.html"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item "><a href="preferences.html"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item "><a href="browsing.html"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item expanded "><a href="stats.html" class="active"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item "><a href="math.html"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="contrib.html">貢献</a></li><li class="chapter-item affix "><a href="faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="resources.html">リソース</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Ankiマニュアル</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://forms.gle/jbnPepH378mVb2Sz5" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-envelope"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="カード情報グラフと統計"><a class="header" href="#カード情報グラフと統計">カード情報、グラフと統計</a></h1>
+<!-- toc -->
+<h2 id="カード情報"><a class="header" href="#カード情報">カード情報</a></h2>
+<p>カードの情報を表示するには、カードのメニューから「情報」を選択するか、カードを右クリックして<strong>情報</strong>を選択するか、復習画面で<kbd>I</kbd>キーを押します。</p>
+<p><img src="media/card_info.png" alt="カード情報" /></p>
+<p>いくつかの注意点：</p>
+<p><strong>位置</strong><br />
+他の新しいカードに対してカードが表示される順序を示します。位置はブラウザで変更できます。一度カードが学習されると、カードが手動で新しい状態にリセットされない限り、位置は使用されません。</p>
+<p><strong>間隔</strong><br />
+次の復習までの遅延時間。時間は省略されて表示されます。「0s, 1m, 3h, 4d, 5mo, 6y」はそれぞれ秒、分、時間、日、月、年を指します。</p>
+<p><strong>イーズ</strong><br />
+復習カードに「良い」ボタンで回答したときに、間隔がどの程度伸びるかの概算値です。</p>
+<p>下部のセクションには、カードの復習履歴が表示されます。評価はボタンを示します（1 = 再学習、4 = 簡単）。カードが「リセット」または「期限設定」アクションを使用して手動で再スケジュールされた場合、タイプは手動として表示され、評価は0になります。</p>
+<h2 id="統計"><a class="header" href="#統計">統計</a></h2>
+<p>統計ウィンドウは、メインウィンドウの上部にある<strong>統計</strong>ボタンをクリックするか、<kbd>T</kbd>キーを押すことでアクセスできます。</p>
+<p><img src="media/Statistics.png" alt="統計画面" /></p>
+<h2 id="デッキ--コレクションの選択"><a class="header" href="#デッキ--コレクションの選択">デッキ / コレクションの選択</a></h2>
+<h3 id="デッキ"><a class="header" href="#デッキ">デッキ</a></h3>
+<p>デフォルトでは、統計ウィンドウは現在選択されているデッキとそのサブデッキの統計を表示しますが、画面上部のテキストボックスにデッキ名を入力するか（Anki 2.1.61以降）、下部のデッキセレクターを使用して、コレクション内の任意のデッキを選択できます。</p>
+<h3 id="コレクション"><a class="header" href="#コレクション">コレクション</a></h3>
+<p>このチェックボックスを選択すると、コレクション全体の統計が表示されます。また、検索ボックスにフィルターを追加することで、任意の検索結果に対してグラフを表示することもできます（2.1.28+）。</p>
+<h3 id="履歴"><a class="header" href="#履歴">履歴</a></h3>
+<p>デフォルトでは、Anki 2.1.28+は過去12ヶ月の統計を表示します。これを全履歴スコープまたはデッキのライフスコープに変更することができます（「今日」のセクションはこの選択に影響されません）。</p>
+<p>古いバージョンのAnkiでは、デフォルトで前月の統計が表示されます。これを1年スコープまたはデッキのライフスコープに変更することができます（「今日」のセクションはこの選択に影響されません）。</p>
+<h3 id="その他"><a class="header" href="#その他">その他</a></h3>
+<ul>
+<li>
+<p>下部の「PDFを保存」をクリックすると、統計情報のPDFドキュメントがデスクトップに保存され、他の人と統計情報を簡単に共有できます。</p>
+</li>
+<li>
+<p>ノートを削除すると、その復習履歴はAnkiに保持されます。特定のデッキの統計を見るときには含まれません（削除されたカードがどのデッキに属していたかをAnkiが知る方法がないため）が、コレクション全体の統計を見るときには含まれます。</p>
+</li>
+<li>
+<p>Anki 2.1.28+では、グラフが再設計されました。古いグラフは、<kbd>Shift</kbd>キーを押しながら統計ボタンをクリックすることで引き続きアクセスできます。</p>
+</li>
+</ul>
+<h2 id="今日"><a class="header" href="#今日">今日</a></h2>
+<p>統計ウィンドウの上部には、今日完了した復習に関する簡単なテキスト統計のリストがあります。この文脈での「復習」は「カードの1回の回答」を意味するため、カードが複数回表示される必要があった場合、それは複数の復習としてカウントされます。また、学習カードの回答も「復習」としてカウントされます。意味がすぐにはわからないかもしれない統計のいくつかを以下に示します：</p>
+<p><strong>再学習回数</strong><br />
+これは、失敗した復習の回数（つまり、「再学習」を押した回数）です。その後に表示される正解率は、失敗しなかったカードの数を学習したカードの総数で割ったものです。</p>
+<p><strong>学習、復習、再学習、フィルターデッキ</strong><br />
+学習カード、復習カード、再学習カード、または期限が来ていないフィルターデッキで学習した復習の数です。</p>
+<p>現在の日の統計は、学習の進捗状況を全体的に示す良い指標ではありません。誰にでも悪い日や良い日があり、特定の日に正解率が低かったとしても、それを気にする必要はありません。残りの統計は、より長い期間を考慮に入れているため、学習習慣やスケジュール設定をパフォーマンスに基づいて変更したい場合に、より有用な情報を提供します。</p>
+<p>「今日」の統計は、ウィンドウの下部で選択された期間には影響されません。</p>
+<h2 id="グラフ"><a class="header" href="#グラフ">グラフ</a></h2>
+<p><strong>将来の予定</strong><br />
+このグラフは、新しいカードを学習せず、カードに失敗しなかった場合に、将来の特定の日に予定されている復習の推定数を示します。バーと左軸は、毎日すべてのカードを学習した場合に各日に予定されているカードの数を示し、線と右軸は、その日まで全く学習しなかった場合にその日に予定されているカードの数を示します。予測グラフには現在期限切れの復習はカウントされないため、大量の未処理カードがある場合、それらのカードは表示されません。</p>
+<p><strong>カレンダー</strong><br />
+このグラフは過去のカード復習活動を示します。特定の日にマウスをホバーすると、その日に行った復習の数を表示できます。曜日をクリックすると、その曜日を週の開始日に設定できます。</p>
+<p><strong>復習</strong><br />
+このグラフは、行ったカード復習の数をカウントします。バーは、画面下部で選択した期間に応じて、日、週、または月に対応します。異なる色のブロックは、各日に回答したカードが<a href="getting-started.html#%E3%82%AB%E3%83%BC%E3%83%89%E3%81%AE%E7%A8%AE%E9%A1%9E">成熟カード</a>、若いカード、再学習カード、または学習カードのどれであったかを示します。また、期限が来ていないフィルターデッキ/詰め込みデッキで回答したカードのための別のグループもあります。線と右軸は、時間が経過するにつれて各タイプの復習の累積合計を示します（したがって、0日目では、グラフに表示されている全期間の数を表示します）。</p>
+<p><strong>カード数</strong><br />
+この円グラフは、デッキまたはコレクションの中で成熟カード、未見カード、若い/学習カード、および一時停止カードが占める割合を示します。より正確な割合を計算したい場合は、キーに各セクションの正確なカード数が表示され、総カード数が横に表示されます。</p>
+<p><strong>復習時間</strong><br />
+このグラフは復習数と同じように機能しますが、回答したカードの数ではなく、各カードに費やした時間を扱います。</p>
+<p><strong>復習間隔</strong><br />
+このグラフは、特定の間隔（2つの復習間の遅延）を持つカードの数を表示します。線と右軸は、そのポイント以下の間隔を持つカードの割合を示します。このグラフでは、他のグラフとは異なる時間範囲の効果があります：表示される間隔の範囲を制限するため、1年のグラフでは14ヶ月の間隔は表示されません。</p>
+<p><strong>カードのイーズ</strong><br />
+このグラフは、特定のイーズファクターを持つカードの数を示します。選択したデッキ/コレクションの平均イーズもここに表示されます。</p>
+<p><strong>時間別の内訳</strong><br />
+このグラフは、特定の時間帯に合格した（つまり、「再学習」を押さなかった）復習の割合を示します。大きくて濃いバーと左軸は成功率を示し、細くて薄いバーと右軸はその時間帯に行った復習の数を示します（結果の重要性を把握するため）。</p>
+<p><strong>回答ボタン</strong><br />
+このグラフは、学習/新規カード、若いカード、および<a href="getting-started.html#%E3%82%AB%E3%83%BC%E3%83%89%E3%81%AE%E7%A8%AE%E9%A1%9E">成熟カード</a>に対して、「再学習」、「難しい」、「良い」、または「簡単」ボタンを選択した回数を示します。Ankiはまた、各タイプのカードに対する正解率も表示します。</p>
+<h2 id="手動分析"><a class="header" href="#手動分析">手動分析</a></h2>
+<p>Ankiが提供する以外の統計情報を取得したい場合、データに直接アクセスすることが可能です。ただし、複雑さが伴うため、これに関するサポートは提供できません。</p>
+<p>一つの方法は、<a href="addons.html">アドオンを書く</a>ことで、統計ウィンドウに別のグラフや詳細を追加することです。この種のアドオンはすでにAnkiWebにいくつかあり、それらを参考にして仕組みを理解することができます。</p>
+<p>より強力で複雑な方法として、Ankiのデータベースから直接復習のログ情報を抽出し、外部プログラムで分析することが挙げられます。AnkiはSQLiteというデータベース形式を使用しています。SQLiteデータベースを扱うためのツールは多数ありますが、最初に試すのに最も簡単なものの一つは<a href="http://sqlitebrowser.org/">SQLite Browser</a>です。これを使うと、データベースを閲覧したり、テーブルのCSVバージョンをエクスポートして他のプログラムにインポートすることができます。</p>
+<p>統計にとって最も重要なテーブルは「revlog」テーブルで、ここには各復習のエントリが保存されます。カラムは以下の通りです：</p>
+<p><strong>id</strong><br />
+復習が行われた時間を、1970年1月1日午前0時（UTC）からの経過ミリ秒数で示します。（これは「Unixエポックタイム」として知られることがありますが、特に秒単位の場合にそう呼ばれます。）</p>
+<p><strong>cid</strong><br />
+復習されたカードのIDです。この値を「cards」テーブルのidフィールドで調べると、カードに関する詳細情報を得ることができます。ただし、revlogエントリが記録された時点と調べている時点でカードが変更されている可能性があることに注意してください。また、これはカードの作成時間のミリ秒単位のタイムスタンプでもあります。</p>
+<p><strong>usn</strong><br />
+このカラムは復習の同期状態を追跡するために使用され、分析には役立ちません。</p>
+<p><strong>ease</strong><br />
+復習の最後に押したボタン（1は「再学習」、4は「簡単」）。</p>
+<p><strong>ivl</strong><br />
+復習後にカードが設定された新しい間隔。正の値は日数、負の値は秒数（学習カードの場合）です。</p>
+<p><strong>lastIvl</strong><br />
+復習前のカードの間隔。初めて導入されたカードは、再学習の遅延と同じ間隔を持ちます。</p>
+<p><strong>factor</strong><br />
+カードの新しいイーズファクターをパーミル（千分率）で示します。イーズファクターが2500の場合、次に「良い」を押すとカードの間隔は2.5倍になります。</p>
+<p><strong>time</strong><br />
+質問と回答の両方の側面に費やした時間（ミリ秒単位）を示します。</p>
+<p><strong>type</strong><br />
+これは学習カードの場合は0、復習カードの場合は1、再学習カードの場合は2、早期「詰め込み」カード（期限が来ていないフィルターデッキで学習されているカード）の場合は3です。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="files.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="media.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="files.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="media.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

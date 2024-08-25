@@ -1,0 +1,457 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>フィールド置換 - Ankiマニュアル</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../css/misc.css">
+        <link rel="stylesheet" href="../css/kbd.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../intro.html">はじめに</a></li><li class="chapter-item "><a href="../background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="../platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="../platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="../platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="../platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="../platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="../platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="../platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="../platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="../platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="../platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="../platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="../platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="../platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="../platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="../platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="../platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="../platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="../getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="../getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item "><a href="../studying.html"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item "><a href="../editing.html"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item expanded "><a href="../templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../templates/fields.html" class="active"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="../templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="../templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="../templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item "><a href="../preferences.html"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="../deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="../syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="../profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item "><a href="../browsing.html"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="../filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="../searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="../importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="../importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="../exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="../backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="../files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item "><a href="../stats.html"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="../media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item "><a href="../math.html"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="../leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="../addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="../troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="../sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="../misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="../contrib.html">貢献</a></li><li class="chapter-item affix "><a href="../faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="../resources.html">リソース</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Ankiマニュアル</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://forms.gle/jbnPepH378mVb2Sz5" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-envelope"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="フィールド置換"><a class="header" href="#フィールド置換">フィールド置換</a></h1>
+<!-- toc -->
+<h2 id="基本的な置換"><a class="header" href="#基本的な置換">基本的な置換</a></h2>
+<p>最も基本的なテンプレートは次のようになります：</p>
+<pre><code>{{Front}}
+</code></pre>
+<p>中括弧内にテキストを配置すると、Ankiはその名前のフィールドを探し、フィールドの実際の内容でテキストを置き換えます。</p>
+<p>フィールド名は大文字と小文字を区別します。<code>Front</code>というフィールドがある場合、<code>{{front}}</code>と書いても正しく動作しません。</p>
+<p>テンプレートはフィールドのリストに限定されません。テンプレートに任意のテキストを含めることもできます。例えば、首都を学習していて、「Country」というフィールドを持つノートタイプを作成した場合、次のような表テンプレートを作成するかもしれません：</p>
+<pre><code>{{Country}}の首都はどこですか？
+</code></pre>
+<p>デフォルトの裏テンプレートは次のようになります：</p>
+<pre><code>{{FrontSide}}
+
+&lt;hr id=answer&gt;
+
+{{Back}}
+</code></pre>
+<p>これは「表側のテキストを表示し、その後に区切り線を表示し、次に裏フィールドを表示する」という意味です。</p>
+<p>'id=answer' の部分は、質問と回答の間の区切りがどこにあるかをAnkiに伝えます。これにより、長いカードで「回答を表示」ボタンを押したときに、Ankiが自動的に回答が始まる場所までスクロールすることができます（特に小さな画面のモバイルデバイスで便利です）。回答の最初に水平線を表示したくない場合は、段落やdivなどの別のHTML要素を使用することもできます。</p>
+<h2 id="改行"><a class="header" href="#改行">改行</a></h2>
+<p>カードテンプレートはウェブページのようなもので、新しい行を作成するには特別なコマンドが必要です。例えば、テンプレートに次のように書いた場合：</p>
+<pre><code>one
+two
+</code></pre>
+<p>プ復習では実際には次のように表示されます：</p>
+<pre><code>one two
+</code></pre>
+<p>新しい行を追加するには、行の末尾に&lt;br&gt;コードを追加する必要があります。次のように：</p>
+<pre><code>one&lt;br&gt;
+two
+</code></pre>
+<p>brコードは「(行) br(eak)」を意味します。</p>
+<p>フィールドにも同じことが当てはまります。2つのフィールドを表示し、それぞれを別の行に表示したい場合は、次のようにします：</p>
+<pre><code>{{Field 1}}&lt;br&gt;
+{{Field 2}}
+</code></pre>
+<h2 id="個別フィールドのテキスト読み上げ"><a class="header" href="#個別フィールドのテキスト読み上げ">個別フィールドのテキスト読み上げ</a></h2>
+<p>この機能を使用するには、Anki 2.1.20、AnkiMobile 2.0.56、または AnkiDroid 2.17 が必要です。</p>
+<p>US 英語の音声で Front フィールドを読み上げるには、カードテンプレートに次のように記述します：</p>
+<pre><code>{{tts en_US:Front}}
+</code></pre>
+<p>Windows、macOS、および iOS では、Anki は OS に組み込まれている音声を使用します。Linux では、組み込みの音声はありませんが、<a href="https://ankiweb.net/shared/info/391644525">このアドオン</a>などのアドオンによって音声を提供できます。</p>
+<p>利用可能なすべての言語/音声のリストを表示するには、カードテンプレートに次のように記述します：</p>
+<pre><code>{{tts-voices:}}
+</code></pre>
+<p>選択した言語をサポートする音声が複数ある場合、希望する音声をリストで指定でき、Anki は最初に利用可能な音声を選択します。例えば：</p>
+<pre><code>{{tts ja_JP voices=Apple_Otoya,Microsoft_Haruka:Field}}
+</code></pre>
+<p>これは、Apple デバイスでは Otoya を、Windows PC では Haruka を使用します。</p>
+<p>一部の TTS 実装では、異なる速度を指定することも可能です：</p>
+<pre><code>{{tts fr_FR speed=0.8:SomeField}}
+</code></pre>
+<p>速度と音声はどちらもオプションですが、言語は必須です。</p>
+<p>Mac では、利用可能な音声をカスタマイズできます：</p>
+<ul>
+<li>
+<p>システム環境設定を開きます。</p>
+</li>
+<li>
+<p>アクセシビリティをクリックします。</p>
+</li>
+<li>
+<p>スピーチをクリックします。</p>
+</li>
+<li>
+<p>システム音声のドロップダウンをクリックし、カスタマイズを選択します。</p>
+</li>
+</ul>
+<p>音声によっては他のものよりも良い音がするものもあるので、好みのものを選ぶために試してみてください。Siri の音声は Apple のアプリでのみ使用できることに注意してください。新しい音声をインストールした後、Anki を再起動する必要があります。</p>
+<p>Windows では、Cortana などの一部の音声は選択できません。これは、Microsoft がこれらの音声を他のアプリケーションに提供していないためです。</p>
+<p>クロズノートタイプでは、<code>cloze-only</code> フィルターを使用して、Anki に省略された部分のみを読み上げさせることができます。例えば：</p>
+<pre><code>{{tts en_US:cloze-only:Text}}
+</code></pre>
+<p><code>cloze-only</code> フィルターは Anki 2.1.29+、AnkiMobile 2.0.65+、および AnkiDroid 2.17+ でサポートされています。</p>
+<h2 id="複数のフィールドと静的テキストの音声読み上げ"><a class="header" href="#複数のフィールドと静的テキストの音声読み上げ">複数のフィールドと静的テキストの音声読み上げ</a></h2>
+<p>この機能を使用するには、Anki 2.1.50+、AnkiMobile 2.0.84+、または AnkiDroid 2.17+ が必要です。</p>
+<p>テンプレートに含まれる複数のフィールドや静的テキストを TTS に読み上げさせたい場合、次のように記述できます：</p>
+<pre><code>[anki:tts lang=en_US] このテキストは読み上げられるべきです。ここに {{Field1}} と {{Field2}} があります[/anki:tts]
+
+これはテンプレート上の他のテキストです。タグの外にあるため、読み上げられるべきではありません。
+</code></pre>
+<h2 id="特殊フィールド"><a class="header" href="#特殊フィールド">特殊フィールド</a></h2>
+<p>テンプレートに含めることができる特殊フィールドがいくつかあります：</p>
+<pre><code>ノートのタグ: {{Tags}}
+
+ノートの種類: {{Type}}
+
+カードのデッキ: {{Deck}}
+
+カードのサブデッキ: {{Subdeck}}
+
+カードのフラグ: {{CardFlag}}
+
+カードの種類（「正面」など）: {{Card}}
+
+表テンプレートの内容
+（裏テンプレートでのみ有効）: {{FrontSide}}
+</code></pre>
+<p>FrontSide はカードの表側にあった音声を自動的に再生しません。カードの表と裏の両方で同じ音声を自動的に再生したい場合は、裏側にも音声フィールドを手動で含める必要があります。</p>
+<p>他のフィールドと同様に、特殊フィールド名は大文字と小文字を区別します。例えば、<code>{{tags}}</code> ではなく <code>{{Tags}}</code> を使用する必要があります。</p>
+<h2 id="ヒントフィールド"><a class="header" href="#ヒントフィールド">ヒントフィールド</a></h2>
+<p>カードの表または裏にフィールドを追加することができますが、それを明示的に表示するまで隠しておくことができます。これを「ヒントフィールド」と呼びます。ヒントを追加する前に、Ankiで質問に答えるのを簡単にするほど、実際にその質問に遭遇したときに覚えている可能性が低くなることを覚えておいてください。進める前に、<a href="https://super-memory.com/articles/20rules.htm">https://super-memory.com/articles/20rules.htm</a> にある「最小情報の原則」について読んでください。</p>
+<p>まず、まだ追加していない場合は、ヒントを保存するフィールドを追加する必要があります。これを行う方法がわからない場合は、<a href="../editing.html#%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA">フィールド</a>セクションを参照してください。</p>
+<p>MyFieldというフィールドを作成したと仮定すると、次のようにテンプレートに追加することで、Ankiにそのフィールドをカードに含めるがデフォルトでは隠すように指示できます：</p>
+<pre><code>{{hint:MyField}}
+</code></pre>
+<p>これにより、「ヒントを表示」というラベルのリンクが表示されます。クリックすると、そのフィールドの内容がカードに表示されます。（MyFieldが空の場合、何も表示されません。）</p>
+<p>質問にヒントを表示してから回答を表示すると、ヒントは再び隠されます。回答が表示されたときに常にヒントを表示したい場合は、裏テンプレートから <code>{{FrontSide}}</code> を削除し、表示したいフィールドを手動で追加する必要があります。</p>
+<p>現在、音声に対してヒントフィールドを使用することはできません。音声はヒントリンクをクリックしたかどうかに関係なく再生されます。</p>
+<p>外観や動作をカスタマイズしたい場合は、ヒントフィールドを自分で実装する必要があります。サポートは提供できませんが、以下のコードが開始点になるでしょう：</p>
+<pre><code>{{#Back}}
+﻿&lt;a class=hint href="#"
+onclick="this.style.display='none';document.getElementById('hint4753594160').style.display='inline-block';return false;"&gt;
+Show Back&lt;/a&gt;&lt;div id="hint4753594160" class=hint style="display: none"&gt;{{Back}}&lt;/div&gt;
+{{/Back}}
+</code></pre>
+<h2 id="辞書リンク"><a class="header" href="#辞書リンク">辞書リンク</a></h2>
+<p>フィールド置換を使用して辞書リンクを作成することもできます。例えば、あなたが言語を学習していて、お気に入りのオンライン辞書が次のようなウェブURLを使用してテキストを検索できるとします：</p>
+<pre><code>http://example.com/search?q=myword
+</code></pre>
+<p>テンプレートに次のように記述することで、自動リンクを追加できます：</p>
+<pre><code>{{Expression}}
+
+&lt;a href="http://example.com/search?q={{Expression}}"&gt;辞書で確認&lt;/a&gt;
+</code></pre>
+<p>上記のテンプレートは、復習中にリンクをクリックすることで各ノートの表現を検索できるようにします。ただし、注意点があるので、次のセクションを参照してください。</p>
+<h2 id="htmlの除去"><a class="header" href="#htmlの除去">HTMLの除去</a></h2>
+<p>テンプレートと同様に、フィールドはHTMLで保存されます。上記の辞書リンクの例では、表現がフォーマットなしで「myword」という単語を含んでいる場合、HTMLも同じく「myword」になります。しかし、フィールドにフォーマットを含めると、追加のHTMLが含まれます。例えば、「myword」が太字の場合、実際のHTMLは「&lt;b&gt;myword&lt;/b&gt;」になります。</p>
+<p>これは、辞書リンクのようなものに問題を引き起こす可能性があります。上記の例では、辞書リンクは次のようになります：</p>
+<pre><code>&lt;a href="http://example.com/search?q=&lt;b&gt;myword&lt;/b&gt;"&gt;辞書で確認&lt;/a&gt;
+</code></pre>
+<p>リンク内の余分な文字は辞書サイトを混乱させる可能性があり、マッチしない可能性が高くなります。</p>
+<p>これを解決するために、Ankiはフィールドが置換されるときにフォーマットを除去する機能を提供します。フィールド名の前にtext:を付けると、Ankiはフォーマットを含めません。したがって、フォーマットされたテキストでも機能する辞書リンクは次のようになります：</p>
+<pre><code>&lt;a href="http://example.com/search?q={{text:Expression}}"&gt;辞書で確認&lt;/a&gt;
+</code></pre>
+<h2 id="右から左へのテキスト"><a class="header" href="#右から左へのテキスト">右から左へのテキスト</a></h2>
+<p>右から左に読む言語を使用している場合、テンプレートを次のように調整する必要があります：</p>
+<pre><code>&lt;div dir=rtl&gt;{{FieldThatHasRTLTextInIt}}&lt;/div&gt;
+</code></pre>
+<h2 id="ルビ文字"><a class="header" href="#ルビ文字">ルビ文字</a></h2>
+<p>一部の言語では、文字の発音を表示するためにテキストの上に注釈を付けることが一般的です。これらの注釈は<a href="https://en.wikipedia.org/wiki/Ruby_character">ルビ文字</a>として知られています。日本語では、これらは<a href="https://en.wikipedia.org/wiki/Furigana">ふりがな</a>として知られています。</p>
+<p>Ankiでは、次の構文を使用してルビ文字を表示できます：</p>
+<pre><code>Text[Ruby]
+</code></pre>
+<p>上記のテキストが MyField に書かれているとします。デフォルトでは、単に <code>{{MyField}}</code> を使用すると、フィールドはそのまま表示されます。ルビ文字をテキストの上に適切に配置するには、テンプレートで <code>furigana</code> フィルターを次のように使用します：</p>
+<pre><code>{{furigana:MyField}}
+</code></pre>
+<p>いくつかの例を示します：</p>
+<!-- prettier-ignore -->
+<div class="table-wrapper"><table><thead><tr><th>生のテキスト</th><th>表示されたテキスト</th></tr></thead><tbody>
+<tr><td><code>Text[Ruby]</code></td><td><ruby><rb>Text</rb><rt>Ruby</rt></ruby></td></tr>
+<tr><td><code>日本語[にほんご]</code></td><td><ruby><rb>日本語</rb><rt>にほんご</rt></ruby></td></tr>
+<tr><td><code>世[よ]の 中[なか]</code></td><td><ruby><rb>世</rb><rt>よ</rt></ruby>の<ruby><rb>中</rb><rt>なか</rt></ruby></td></tr>
+<tr><td><code>世[よ]の中[なか]</code></td><td><ruby><rb>世</rb><rt>よ</rt></ruby><ruby><rb>の中</rb><rt>なか</rt></ruby> <em>(誤り!)</em></td></tr>
+</tbody></table>
+</div>
+<p>3番目の例では、中文字の前にスペースがあることに注意してください。これは、ルビテキストがその文字にのみ適用されることを指定するために必要です。スペースがない場合、ルビテキストはの文字の上に誤って配置されます。4番目の例で示されているように。</p>
+<h3 id="追加のルビ文字フィルター"><a class="header" href="#追加のルビ文字フィルター">追加のルビ文字フィルター</a></h3>
+<p><code>furigana</code> フィルターに加えて、<code>kana</code> および <code>kanji</code> フィルターを使用してルビテキストの特定の部分のみを表示することもできます。<code>kana</code> フィルターはルビテキストのみを表示し、<code>kanji</code> フィルターはルビテキストを完全に削除します。</p>
+<!-- prettier-ignore -->
+<div class="table-wrapper"><table><thead><tr><th>生のテキスト</th><th>フィールドフィルター</th><th>表示されたテキスト</th></tr></thead><tbody>
+<tr><td><code>日本語[にほんご]</code></td><td><code>{{furigana:MyField}}</code></td><td><ruby><rb>日本語</rb><rt>にほんご</rt></ruby></td></tr>
+<tr><td><code>日本語[にほんご]</code></td><td><code>{{kana:MyField}}</code></td><td>にほんご</td></tr>
+<tr><td><code>日本語[にほんご]</code></td><td><code>{{kanji:MyField}}</code></td><td>日本語</td></tr>
+</tbody></table>
+</div>
+<p>これらの名前は再び日本語から借用されています。
+<a href="https://en.wikipedia.org/wiki/Kana">kana</a> という用語は、単語の発音を説明するために使用される音節文字を表し、<a href="https://en.wikipedia.org/wiki/Kanji">kanji</a> という用語はその漢字を表します。</p>
+<h2 id="メディアと-latex"><a class="header" href="#メディアと-latex">メディアと LaTeX</a></h2>
+<p>Anki はテンプレートをメディア参照のためにスキャンしません。なぜなら、それは遅いからです。これは、テンプレートにメディアを含めることに影響を与えます。</p>
+<h3 id="静的な音声画像"><a class="header" href="#静的な音声画像">静的な音声/画像</a></h3>
+<p>すべてのカードで同じ画像や音声（例：各カードの上部に会社のロゴ）を含めたい場合：</p>
+<ol>
+<li>
+<p>ファイル名をアンダースコアで始まるように変更します。例："_logo.jpg"。アンダースコアは、そのファイルがテンプレートによって使用され、デッキを共有する際にエクスポートされるべきであることを Anki に伝えます。</p>
+</li>
+<li>
+<p>表または裏のテンプレートにメディアへの参照を追加します。例：</p>
+</li>
+</ol>
+<h3 id="フィールド参照"><a class="header" href="#フィールド参照">フィールド参照</a></h3>
+<p>フィールドへのメディア参照はサポートされていません。復習中に表示されるかもしれませんし、されないかもしれません。また、未使用メディアのチェック、インポート/エクスポートなどの際には機能しません。機能しない例：</p>
+<pre><code>&lt;img src="{{Expression}}.jpg"&gt;
+
+[sound:{{Word}}]
+
+[latex]{{Field 1}}[/latex]
+</code></pre>
+<p>代わりに、メディア参照をフィールドに含めるべきです。詳細については、<a href="../importing/text-files.html#%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">インポートセクション</a>を参照してください。</p>
+<h2 id="答えの確認"><a class="header" href="#答えの確認">答えの確認</a></h2>
+<p>この機能についての<a href="http://www.youtube.com/watch?v=5tYObQ3ocrw&amp;yt:cc=on">ビデオ</a>をYouTubeで見ることができます。</p>
+<p>答えを確認する最も簡単な方法は、カード追加画面の左上にある「Basic」をクリックし、「Basic (type in the answer)」を選択することです。</p>
+<p>共有デッキをダウンロードして、そのデッキで答えを入力して確認したい場合は、そのカードテンプレートを変更できます。テンプレートが次のようになっている場合：</p>
+<pre><code>{{Native Word}}
+
+{{FrontSide}}
+
+&lt;hr id=answer&gt;
+
+{{Foreign Word}}
+</code></pre>
+<p>外国語の単語を入力して正しいかどうかを確認するには、フロントテンプレートを次のように編集する必要があります：</p>
+<pre><code>{{Native Word}}
+{{type:Foreign Word}}
+</code></pre>
+<p>比較したいフィールドの前に <code>type:</code> を追加したことに注意してください。FrontSide がカードの裏側にあるため、入力ボックスも裏側に表示されます。</p>
+<p>復習時に、Ankiはテキストボックスを表示し、そこに答えを入力できます。<kbd>Enter</kbd>キーを押すか答えを表示すると、Ankiはどの部分が正解でどの部分が間違っているかを表示します。テキストボックスのフォントサイズは、そのフィールドに対して設定したサイズ（編集時に「フィールド」ボタンを介して）になります。</p>
+<p>この機能はカードの回答方法を変更しないため、覚えていたかどうかを決定するのはあなた次第です。</p>
+<p>カードには1つの入力比較のみを使用できます。上記のテキストを複数回追加しても機能しません。また、単一行のみをサポートするため、複数行で構成されるフィールドとの比較には適していません。</p>
+<p>Ankiは、提供された部分と正解の部分が揃うように、答えの比較には等幅フォントを使用します。答えの比較に使用するフォントを上書きしたい場合は、スタイリングセクションの下部に次のように記述できます：</p>
+<pre><code>code#typeans { font-family: "myfontname"; }
+</code></pre>
+<p>これにより、答えの比較に使用される次のHTMLに影響を与えます：</p>
+<pre><code>&lt;code id=typeans&gt;...&lt;/code&gt;
+</code></pre>
+<p>上級ユーザーは、CSSクラス 'typeGood'、'typeBad'、'typeMissed' を使用してデフォルトのタイプアンサーの色を上書きできます。AnkiMobileは 'typeGood' と 'typeBad' をサポートしていますが、'typeMissed' はサポートしていません。</p>
+<p>入力ボックスのサイズを上書きしたいが、フィールドダイアログでフォントを変更したくない場合は、<code>!important</code> を使用してデフォルトのインラインスタイルを上書きできます。例えば：</p>
+<pre><code>#typeans { font-size: 50px !important; }
+</code></pre>
+<p>クロズ削除カードに対しても答えを入力することが可能です。これを行うには、<code>{{type:cloze:Text}}</code> を表と裏のテンプレートの両方に追加します。裏側は次のようになります：</p>
+<pre><code>{{cloze:Text}}
+{{type:cloze:Text}}
+{{Extra}}
+</code></pre>
+<p>クロズタイプはFrontSideを使用しないため、クロズノートタイプではこれを両面に追加する必要があります。</p>
+<p>複数のセクションが省略されている場合、テキストボックス内の答えをカンマで区切ることができます。</p>
+<p>入力ボックスはブラウザの「プレビュー」ダイアログには表示されません。カードタイプウィンドウで復習またはプレビューを見ると表示されます。</p>
+<p>入力ボックスは <a href="../syncing.html">ankiweb.net</a> でカードを復習する際には表示されません。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../templates/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../templates/generation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../templates/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../templates/generation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

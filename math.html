@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>数式と記号 - Ankiマニュアル</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/kbd.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">はじめに</a></li><li class="chapter-item "><a href="background.html"><strong aria-hidden="true">1.</strong> 背景</a></li><li class="chapter-item "><a href="platform/intro.html"><strong aria-hidden="true">2.</strong> プラットフォームノート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> インストールの問題</a></li><li class="chapter-item "><a href="platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> 起動の問題</a></li><li class="chapter-item "><a href="platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> コピー＆ペーストの問題</a></li><li class="chapter-item "><a href="platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> テキストサイズ</a></li><li class="chapter-item "><a href="platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> 権限の問題</a></li></ol></li><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> 表示の問題</a></li></ol></li><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> インストールとアップグレード</a></li><li class="chapter-item "><a href="platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> ライブラリが見つからない</a></li><li class="chapter-item "><a href="platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> 表示の問題</a></li><li class="chapter-item "><a href="platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> メインウィンドウが空白</a></li><li class="chapter-item "><a href="platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linuxディストロパッケージ</a></li><li class="chapter-item "><a href="platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> GTKテーマが正しくない</a></li><li class="chapter-item "><a href="platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> 入力方法</a></li></ol></li></ol></li><li class="chapter-item "><a href="getting-started.html"><strong aria-hidden="true">3.</strong> はじめに</a></li><li class="chapter-item "><a href="getting-help.html"><strong aria-hidden="true">4.</strong> ヘルプの取得</a></li><li class="chapter-item "><a href="studying.html"><strong aria-hidden="true">5.</strong> 学習</a></li><li class="chapter-item "><a href="editing.html"><strong aria-hidden="true">6.</strong> 追加/編集</a></li><li class="chapter-item "><a href="templates/intro.html"><strong aria-hidden="true">7.</strong> カードテンプレート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="templates/fields.html"><strong aria-hidden="true">7.1.</strong> フィールド置換</a></li><li class="chapter-item "><a href="templates/generation.html"><strong aria-hidden="true">7.2.</strong> カード生成</a></li><li class="chapter-item "><a href="templates/styling.html"><strong aria-hidden="true">7.3.</strong> スタイリングとHTML</a></li><li class="chapter-item "><a href="templates/errors.html"><strong aria-hidden="true">7.4.</strong> チェックとエラー</a></li></ol></li><li class="chapter-item "><a href="preferences.html"><strong aria-hidden="true">8.</strong> 設定</a></li><li class="chapter-item "><a href="deck-options.html"><strong aria-hidden="true">9.</strong> デッキオプション</a></li><li class="chapter-item "><a href="syncing.html"><strong aria-hidden="true">10.</strong> AnkiWebと同期</a></li><li class="chapter-item "><a href="profiles.html"><strong aria-hidden="true">11.</strong> プロファイル</a></li><li class="chapter-item "><a href="browsing.html"><strong aria-hidden="true">12.</strong> ブラウザ</a></li><li class="chapter-item "><a href="filtered-decks.html"><strong aria-hidden="true">13.</strong> フィルターデッキ</a></li><li class="chapter-item "><a href="searching.html"><strong aria-hidden="true">14.</strong> 検索</a></li><li class="chapter-item "><a href="importing/intro.html"><strong aria-hidden="true">15.</strong> インポート</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="importing/text-files.html"><strong aria-hidden="true">15.1.</strong> テキストファイル</a></li><li class="chapter-item "><a href="importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> パッケージデッキ</a></li></ol></li><li class="chapter-item "><a href="exporting.html"><strong aria-hidden="true">16.</strong> エクスポート</a></li><li class="chapter-item "><a href="backups.html"><strong aria-hidden="true">17.</strong> バックアップ</a></li><li class="chapter-item "><a href="files.html"><strong aria-hidden="true">18.</strong> ファイル管理</a></li><li class="chapter-item "><a href="stats.html"><strong aria-hidden="true">19.</strong> 統計</a></li><li class="chapter-item "><a href="media.html"><strong aria-hidden="true">20.</strong> メディア</a></li><li class="chapter-item expanded "><a href="math.html" class="active"><strong aria-hidden="true">21.</strong> 数式と記号</a></li><li class="chapter-item "><a href="leeches.html"><strong aria-hidden="true">22.</strong> 苦戦（忘却多発）</a></li><li class="chapter-item "><a href="addons.html"><strong aria-hidden="true">23.</strong> アドオン</a></li><li class="chapter-item "><a href="troubleshooting.html"><strong aria-hidden="true">24.</strong> トラブルシューティング</a></li><li class="chapter-item "><a href="sync-server.html"><strong aria-hidden="true">25.</strong> 同期サーバー</a></li><li class="chapter-item "><a href="misc.html"><strong aria-hidden="true">26.</strong> その他</a></li><li class="chapter-item affix "><a href="contrib.html">貢献</a></li><li class="chapter-item affix "><a href="faqs.html">FAQs</a></li><li class="chapter-item affix "><a href="resources.html">リソース</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Ankiマニュアル</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://forms.gle/jbnPepH378mVb2Sz5" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-envelope"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="数学と記号"><a class="header" href="#数学と記号">数学と記号</a></h1>
+<!-- toc -->
+<h2 id="mathjax"><a class="header" href="#mathjax">MathJax</a></h2>
+<p><a href="https://www.mathjax.org">MathJax</a>は、現代のブラウザベースの組版システムで、数学や化学の方程式に便利です。追加のソフトウェアをインストールする必要がないため、簡単に使用でき、ほとんどのユーザーに推奨されます。</p>
+<p>MathJaxはAnki 2.1+、AnkiMobile、およびAnkiDroid 2.9+で標準サポートされています。</p>
+<p>試してみるには：</p>
+<ol>
+<li>
+<p>フィールドに次のように入力します：</p>
+<pre><code>\sqrt{x}
+</code></pre>
+</li>
+<li>
+<p>今入力したテキストを選択します。</p>
+</li>
+<li>
+<p>エディタの一番右のボタンをクリックし、メニューから「MathJaxインライン」を選択します。Ankiはテキストを次のように変更します：</p>
+<pre><code>\(\sqrt{x}\)
+</code></pre>
+</li>
+<li>
+<p>「カード…」ボタンをクリックすると、カードが復習されるときに方程式がどのように表示されるかのプレビューが表示されます。</p>
+</li>
+</ol>
+<p>AnkiのMathJaxサポートはTeX形式のコンテンツを期待しています。TeX形式に慣れていない場合は、<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">このチートシート</a>を参照してください。ポイント2はAnkiには適用されないことに注意してください。Ankiではインライン方程式に<code>\(</code>と<code>\)</code>、表示方程式に<code>\[</code>と<code>\]</code>を使用します。</p>
+<p>MathJax式で改行を使用したい場合は、通常の改行ではMathJaxが正しく動作しないため、<kbd>Shift</kbd>+<kbd>Enter</kbd>を使用してください。</p>
+<p>Ankiには化学方程式をレンダリングするためのmhchemの組み込みサポートが含まれています。詳細については、「化学方程式」セクションおよび以下のセクションを参照してください：
+<a href="https://mhchem.github.io/MathJax-mhchem/">https://mhchem.github.io/MathJax-mhchem/</a></p>
+<p>いくつかの設定を<a href="https://shigeyukey.github.io/Anki-faqs-jp/customizing-mathjax.html">カスタマイズすること</a>も可能です。</p>
+<h2 id="latex"><a class="header" href="#latex">LaTeX</a></h2>
+<p>LaTeXは強力な組版システムで、数学の公式、化学式、楽譜などの入力に便利です。AnkiはLaTeXのサポートを提供しており、ノートにLaTeXコードを入力することができます。カードを復習するとき、AnkiはLaTeXを呼び出して生成された画像を表示します。</p>
+<p>LaTeXの設定は少し手間がかかり、画像はAnkiのコンピュータ版でのみ生成できますが、一度生成されるとモバイルクライアントでも画像を表示できます。MathJaxが提供する機能以上のものが必要なユーザーにのみ、LaTeXの使用をお勧めします。</p>
+<h3 id="前提知識"><a class="header" href="#前提知識">前提知識</a></h3>
+<p>AnkiのLaTeXサポートはすぐに使えるものではありません。LaTeXの使用方法を既に知っており、インストールされていることが前提です。LaTeXの経験がない場合は、インターネット上の多くのガイドを参照してください。マークアップに問題がある場合は、LaTeXフォーラムで質問してください。</p>
+<p>LaTeXをインストールするには、WindowsではMiKTeXを、macOSではMacTeXを、Linuxではディストリビューションのパッケージマネージャを使用してください。dvipngもインストールする必要があります。</p>
+<p>Windowsでは、MikTeXのメンテナンスウィンドウの設定に移動し、「Install missing packages on the fly」を「Always」に設定し、「Ask me first」には設定しないでください。引き続き問題が発生する場合、あるユーザーはすべてのパッケージが取得されるまでAnkiを管理者として実行することで解決したと報告しています。</p>
+<p>macOSでは、LaTeXはMacTeXおよびBasicTeXでのみテストされています。BasicTeXを使用する場合は、以下のコマンドでdvipngを別途インストールする必要があります：</p>
+<pre><code>sudo tlmgr update --self; sudo tlmgr install dvipng
+</code></pre>
+<p>コマンドがパスに含まれていない場合があるため、フルパスを指定する必要があるかもしれません。例：/usr/local/texlive/2014basic/bin/x86_64-darwin/tlmgr</p>
+<p>上記のLaTeXパッケージを使用していない場合は、<a href="https://ankiweb.net/shared/info/937148547">edit LaTeX</a>アドオンを使用して、latexおよびdvipngへのフルパスを指定する必要があります。</p>
+<h3 id="webモバイル"><a class="header" href="#webモバイル">Web/モバイル</a></h3>
+<p>LaTeXを含むカードを復習すると、AnkiはそのLaTeXの画像を生成し、将来使用するためにコレクションのメディアフォルダに画像を配置します。Webおよびモバイルクライアントは、既に存在するこれらの画像を表示しますが、自分で画像を生成することはできません。</p>
+<p>他のクライアントで学習する前にすべてのカードを少なくとも一度復習する必要がないようにするために、Ankiは一括で画像を生成することができます。すべての画像を生成するには、ツール &gt; メディアの確認に移動してください。その後、同期すると生成されたメディアがAnkiWebおよび他のクライアントにアップロードされます。</p>
+<h2 id="例"><a class="header" href="#例">例</a></h2>
+<p>LaTeXコンテンツを入力する最も一般的な方法は、[latex][/latex]タグで囲むことです。このショートカットボタンについては<a href="editing.html">エディタ</a>セクションに記載されています。</p>
+<p>[latex]タグはフィールド内で使用する必要があります。カードテンプレートに配置すると<a href="templates/fields.html">問題が発生します</a>。</p>
+<p>例えば、Ankiのフラッシュカードの表面に次のように入力すると：</p>
+<pre><code>Does [latex]\begin{math}\sum_{k = 1}^{\infty}\frac{1}{k}\end{math}[/latex] converge?
+</code></pre>
+<p>フラッシュカードを表示したときに次のように表示されます：</p>
+<p><img src="math/convergence_question.png" alt="収束の質問" /></p>
+<p>上記の例の数式は「テキスト数式」と呼ばれ、非数学的なテキスト内に直接表示されます。対照的に、次の例は「表示数式」を示しています：</p>
+<pre><code>Does the sum below converge?
+
+[latex]\begin{displaymath}\sum_{k = 1}^{\infty}\frac{1}{k}\end{displaymath}[/latex]
+</code></pre>
+<p><img src="math/convergence_question_2.png" alt="収束の質問 2" /></p>
+<p>「テキスト数式」と「表示数式」は最も一般的なタイプのLaTeX表現であるため、Ankiはそれらの省略形を提供しています。次の形式の表現：</p>
+<pre><code>[latex]\begin{math}...\end{math}[/latex]
+</code></pre>
+<p>は次のように短縮できます：</p>
+<pre><code>[$]...[/$]
+</code></pre>
+<p>また、次の形式の表現：</p>
+<pre><code>[latex]\begin{displaymath}...\end{displaymath}[/latex]
+</code></pre>
+<p>は次のように短縮できます：</p>
+<pre><code>[$$]...[/$$]
+</code></pre>
+<p>例えば、前述の2つのLaTeXスニペットはそれぞれ次のように等価です：</p>
+<pre><code>Does [$]\sum_{k = 1}^{\infty}\frac{1}{k}[/$] converge?
+</code></pre>
+<p>および</p>
+<pre><code>Does the sum below converge?
+
+[$$]\sum_{k = 1}^{\infty}\frac{1}{k}[/$$]
+</code></pre>
+<p>それぞれ。</p>
+<h3 id="パッケージ"><a class="header" href="#パッケージ">パッケージ</a></h3>
+<p>Ankiでは、LaTeXのプリアンブルをカスタマイズして、化学や音楽などのカスタムパッケージをインポートすることができます。例えば、インターネットでchemtexのサンプルファイルを見つけたとします：</p>
+<pre><code>\documentclass[a4paper,12pt]{report}
+\usepackage{chemtex}
+\begin{document}
+
+\initial
+\begin{figure}[h]\centering
+\parbox{.3\textwidth}{\ethene{H}{H$_3$C}{CH$_3$}{Br}}
+\hfil
+\parbox{.3\textwidth}{\cbranch{H}{S}{H}{S}{C}{S}{}{S}{H}
+  \xi=-200 \cright{}{Q}{C}{D}{O}{S}{OH}}
+\hfil
+\parbox{.3\textwidth}{\hetisix{Q}{Q}{Q}{Q}{Q}{Q}{O}{Q}{O}
+  \xi=-171 \fuseup{Q}{Q}{Q}{Q}{D}{Q}{D}{Q}{D}}
+\caption{Chemie mit {\tt CHEMTEX}\label{a1}}
+\end{figure}
+
+\end{document}
+</code></pre>
+<p>まず、パッケージとMiKTeX/MacTeXのドキュメントに従ってパッケージをインストールします。パッケージが動作しているか確認するために、上記のようなコードを.latexファイルに入れ、コマンドラインからコンパイルできるかテストします。パッケージが利用可能で動作していることを確認したら、Ankiに統合できます。</p>
+<p>Ankiでパッケージを使用するには、メインウィンドウで「追加」をクリックし、ノートタイプ選択ボタンをクリックします。「管理」ボタンをクリックし、使用する予定のノートタイプを選択して「オプション」をクリックします。LaTeXのヘッダーとフッターが表示されます。ヘッダーは次のようになっています：</p>
+<pre><code>\documentclass[12pt]{article}
+\special{papersize=3in,5in}
+\usepackage{amssymb,amsmath}
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+\begin{document}
+</code></pre>
+<p>chemtexを使用するには、先ほどの例のようにusepackage行を追加し、次のようにします：</p>
+<pre><code>\documentclass[12pt]{article}
+\special{papersize=3in,5in}
+\usepackage{amssymb,amsmath}
+\usepackage{chemtex}
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+\begin{document}
+</code></pre>
+<p>その後、Ankiカードに次のような行を含めることができるようになります：</p>
+<pre><code>[latex]\ethene{H}{H$_3$C}{CH$_3$}{Br}[/latex]
+</code></pre>
+<h3 id="テンプレートの競合"><a class="header" href="#テンプレートの競合">テンプレートの競合</a></h3>
+<p>Anki 2.1.20 / AnkiMobile 2.0.56 / AnkiDroid 2.13以降、この回避策は不要になりました。フィールド内の<code>{{field}}</code>テキストが問題を引き起こさなくなったためです。古いバージョンをサポートする必要があり、この構文を使用し続けたい場合は、<code>{{=&lt;% %&gt;=}}</code>文字列を表と裏のテンプレートの最上部に配置してください。最近のAnkiバージョンでは、これが先頭以外の場所にあると認識されません。</p>
+<p>古いバージョンの場合：</p>
+<p>数学の方程式を書くときに、LaTeXコード内に{{と}}が現れることは珍しくありません。LaTeX方程式がAnkiのフィールド置換と競合しないようにするために、セパレータを別のものに変更することが可能です。</p>
+<p>例えば、テンプレートが次のようになっている場合：</p>
+<pre><code>{{latex field}}
+</code></pre>
+<p>次のように変更すると、LaTeXが競合する可能性が低くなります：</p>
+<pre><code>{{=&lt;% %&gt;=}}
+&lt;%latex field%&gt;
+</code></pre>
+<h3 id="クローズの競合"><a class="header" href="#クローズの競合">クローズの競合</a></h3>
+<p>穴埋め問題は<code>}}</code>で終了しますが、これはLaTeX内に現れる<code>}}</code>と競合する可能性があります。LaTeXがクローズの終了マーカーとして解釈されないようにするために、クローズの終了を示さない二重閉じ中括弧の間にスペースを入れることができます。例えば、</p>
+<pre><code>{{c1::[$]\frac{foo}{\frac{bar}{baz}}[/$] blah blah blah.}}
+</code></pre>
+<p>は動作しませんが、</p>
+<pre><code>{{c1::[$]\frac{foo}{\frac{bar}{baz} }[/$] blah blah blah.}}
+</code></pre>
+<p>は動作します（LaTeXは数式モードでスペースを無視するため、方程式は同じようにレンダリングされます）。レンダリングされたテキストに余分なスペースを追加したくない場合（例えば、プログラミング言語を学習するためのクローズカードを作成する場合）、HTMLモードでカードを編集するときにHTMLコメントを使用する別の方法があります：</p>
+<pre><code>{{c1::[$]\frac{foo}{\frac{bar}{baz}&lt;!-- --&gt;}[/$] blah blah blah.}}
+</code></pre>
+<p>穴埋め問題されたテキスト内で<code>::</code>文字列を使用する必要がある場合、どちらの回避策も使用できます。次のノートテキストに対して生成される最初のカードは<code>[type] in C++ is a type-safe union</code>となります：</p>
+<pre><code>{{c1::std:&lt;!-- --&gt;:variant::~type~}} in C++ is a {{c2::type-safe union}}
+</code></pre>
+<h3 id="安全でないコマンド"><a class="header" href="#安全でないコマンド">安全でないコマンド</a></h3>
+<p>Ankiは、\inputや\defなどの特定のコマンドをカードやテンプレートで使用することを禁止しています。これらのコマンドを許可すると、悪意のある共有デッキがシステムに損害を与える可能性があるためです。（安全のため、これらのコマンドはコメント内でも禁止されています。そのため、このエラーが発生しているが使用していないと思われる場合は、ヘッダー、テンプレート、およびカード内のコメントを再確認してください。）これらのコマンドを使用する必要がある場合は、システムパッケージに追加し、前のセクションで説明したようにそのパッケージをインポートしてください。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="media.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="leeches.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="media.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="leeches.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
