@@ -10,6 +10,7 @@ git-repository-url = "https://forms.gle/jbnPepH378mVb2Sz5"
 git-repository-icon = "fa-envelope"
 additional-css = ["css/misc.css", "css/kbd.css"]
 additional-js = ["assets/fzf.umd.js", "assets/elasticlunr.js"]
+edit-url-template = "https://github.com/shigeyukey/anki-manual-jp/edit/main/src/{path}"
 
 [output.html.print]
 enable = false
